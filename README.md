@@ -1,6 +1,8 @@
 # COEN341
 Peer Evaluation Website
+
 Description
+
 A Peer Assessment System for university team projects is designed to allow students to evaluate the contributions and performance of their teammates based on four key dimensions: cooperation, conceptual contribution, practical contribution, and work ethic. The system promotes accountability and provides valuable feedback to both students and instructors on team dynamics and individual efforts.
 
 We identify two primary users: Students and Instructors.
@@ -16,4 +18,12 @@ System Features:
    -Peer feedback is also shared with the students anonymously, helping them improve their performance in future projects
 
 4.	Instructor Dashboard:
-   -Instructors have access to a dashboard that allows them to create teams, and at the end of an evaluation to show detailed peer assessment results by team, by student, and a summary of results. The results can       be exported for further use as CSV file.  
+   -Instructors have access to a dashboard that allows them to create teams, and at the end of an evaluation to show detailed peer assessment results by team, by student, and a summary of results. The results can       be exported for further use as CSV file.
+
+Team Members:
+Najmuddin Nazary - 40211776
+Simon Kallassi - 40121987
+Youssef Marzouk - 40263812
+Paoleno Nikyema-40127111
+Edward Villamaria - 40172621
+Bushr Eiddo - 40099316
