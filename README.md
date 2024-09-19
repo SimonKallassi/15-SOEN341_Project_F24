@@ -7,13 +7,13 @@ We identify two primary users: Students and Instructors.
 
 System Features:
 1.	Students assessment:
-○	Students log into the system and are prompted to evaluate each of their teammates at the end of a project or key milestones.
-○	Evaluation is conducted anonymously to encourage honest and constructive feedback.
-○	Students rate their peers on a 7-point scale for each of the four dimensions, along with optional comment sections for detailed feedback.
+   -Students log into the system and are prompted to evaluate each of their teammates at the end of a project or key milestones.
+   -Evaluation is conducted anonymously to encourage honest and constructive feedback.
+   -Students rate their peers on a 7-point scale for each of the four dimensions, along with optional comment sections for detailed feedback.
 
 2.	Automated Score Sharing and Anonymous Peer Feedback
-●	After submission, individual scores are aggregated, and the instructor receives an overall assessment of each student’s performance.
-●	Peer feedback is also shared with the students anonymously, helping them improve their performance in future projects
+   -After submission, individual scores are aggregated, and the instructor receives an overall assessment of each student’s performance.
+   -Peer feedback is also shared with the students anonymously, helping them improve their performance in future projects
 
 4.	Instructor Dashboard:
-●	Instructors have access to a dashboard that allows them to create teams, and at the end of an evaluation to show detailed peer assessment results by team, by student, and a summary of results. The results can be exported for further use as CSV file.  
+   -Instructors have access to a dashboard that allows them to create teams, and at the end of an evaluation to show detailed peer assessment results by team, by student, and a summary of results. The results can       be exported for further use as CSV file.  
