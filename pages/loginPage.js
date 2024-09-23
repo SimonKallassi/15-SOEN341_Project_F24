@@ -20,3 +20,4 @@ const loginPage = () => {
       </View>
     );
   };
+  export default loginPage;
