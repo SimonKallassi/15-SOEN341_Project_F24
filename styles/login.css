@@ -1,7 +1,41 @@
+div{
+    font-family:Arial;
+}
 .container{
     display:flex;
     flex-direction: column;
     margin:auto;
     margin-top: 250px;
     padding-bottom: 30px;
+}
+.header{
+    display:flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.inputs{
+    display:flex;
+    gap: 25px;
+    flex-direction:column;
+}
+input::placeholder {
+    color: gray;
+    font-style: italic;
+  }
+.buttons{
+    display:flex;
+    gap: 5px;
+    flex-direction:column;
+}
+#submit{
+    border-style:solid;
+    text-align: center;
+    width: 75px;
+    
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-bottom: 20px;
 }
