@@ -1,39 +1,40 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/login.css';
+import '../styles/Login.css';
 
 const Login = () => {
-    // const [username, setUsername] = useState('');
-    // const [password, setPassword] = useState('');
     const navigate = useNavigate();
-  
+   // function SubmitButton() {
+        const handleSubmit = (event) => {
+          
+          alert('Submit clicked!');
+        };
+   // }
     return (
         <div class="container">
             <div class="header">
-                {/* empty for now but will be used late */}
+               Sign In
             </div>
 
             <div class="inputs">
                 <div class="inputs">
-                    <div class="input">
-                        <img src ="." />
-                        <input type="text"/>
+                   
+                    <div class="input" id="username" >
+                        <img src ="../icons/username.png" />
+                        <input type="text" placeholder="Username"/>
                     </div>
-                    <div class="input" id="username">
-                        <img src ="." />
-                        <input type="text"/>
-                    </div>
-                    <div class="input" id="password">
-                        <img src ="." />
-                        <input type="password"/>
+                    <div class="input" id="password" >
+                        <img src ="../icons/password.svg" />
+                        <input type="password" placeholder="Password"/>
                     </div>
                 </div>
 
                 <div class="buttons">
-                    <div class="button" id="submit"></div>
-                    <div class="link" id="">Lost Password? </div>
-                    <div class="link" id="">Lost username? </div>
-                    <div id="">Not registered yet? <span class="link">Sign up</span> </div>
+                    <div onClick={handleSubmit} class="button" id="submit">Log In</div>
+                    {/* Used html link <a></a> for now just for test. Will change using native react routers when pages are created */}
+                    <div class="link" id=""><a href ="#">Lost Password?</a> </div>
+                    <div class="link" id=""><a href ="#">Lost username?</a> </div>
+                    <div id="">Not registered yet? <span class="link"><a href ="#">Sign up</a></span> </div>
                 </div>
             </div>
 
