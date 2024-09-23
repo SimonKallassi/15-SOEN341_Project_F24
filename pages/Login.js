@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import Home from "./Home";
 import { useNavigate } from 'react-router-dom';
+import './styles/login.css'
 
 const Login = () => {
     // const [username, setUsername] = useState('');
@@ -9,7 +8,7 @@ const Login = () => {
     const navigate = useNavigate();
   
     return (
-        <div>
+        <div class="container">
             <div class="header">
                 {/* empty for now but will be used late */}
             </div>
@@ -34,7 +33,7 @@ const Login = () => {
                     <div class="button" id="submit"></div>
                     <div class="link" id="">Lost Password? </div>
                     <div class="link" id="">Lost username? </div>
-                    <div id="">Not registered yet? <span class="link"> Click here to Sign up</span> </div>
+                    <div id="">Not registered yet? <span class="link">Sign up</span> </div>
                 </div>
             </div>
 
