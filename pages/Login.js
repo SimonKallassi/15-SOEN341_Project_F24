@@ -1,22 +1,43 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import Home from "./Home";
+import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-  
+    // const [username, setUsername] = useState('');
+    // const [password, setPassword] = useState('');
+    const navigate = useNavigate();
   
     return (
         <div>
-            <main style={{padding: '20px'}}>
-                <section>
-                    <h1>Welcome to PeerEvaluator.</h1>
-                    <p>To help evaluate your peers.</p>
-                </section>
-                <section>
-                    <h2>I hate this class</h2>
-                </section>
-            </main>
+            <div class="header">
+                {/* empty for now but will be used late */}
+            </div>
+
+            <div class="inputs">
+                <div class="inputs">
+                    <div class="input">
+                        <img src ="." />
+                        <input type="text"/>
+                    </div>
+                    <div class="input" id="username">
+                        <img src ="." />
+                        <input type="text"/>
+                    </div>
+                    <div class="input" id="password">
+                        <img src ="." />
+                        <input type="password"/>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <div class="button" id="submit"></div>
+                    <div class="link" id="">Lost Password? </div>
+                    <div class="link" id="">Lost username? </div>
+                    <div id="">Not registered yet? <span class="link"> Click here to Sign up</span> </div>
+                </div>
+            </div>
+
         </div>
     );
 };
