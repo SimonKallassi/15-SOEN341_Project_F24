@@ -6,14 +6,31 @@ const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    let usernameIsFilled=true;
+    let passwordIsFilled=true;
     const handleSubmit = (event) => {
         event.preventDefault();
 
         //check that the input is not blank
-        if (!email || !password) {
-            alert('Please fill in all fields.');
+        if (!email && password) {
+            usernameIsFilled=false;
+            passwordIsFilled=true;
+            alert('Please fill the username.');
+            return;
+            
+          }else if(email && !password){
+            usernameIsFilled=true;
+            passwordIsFilled=false;
+            alert('Please enter your password.');
+            return;
+          }else if(!email && !password){
+            usernameIsFilled=false;
+            passwordIsFilled=false;
+            alert('Please fill the fields.');
             return;
           }
+          usernameIsFilled=false;
+            passwordIsFilled=false;
           alert('Submit clicked!');
         };
         
@@ -23,7 +40,7 @@ const Login = () => {
         <div class="container">
            
             <form onSubmit={handleSubmit}>
-                <div class="inputs">
+                <div class="formBox">
                     <div class="header">
                         Sign In
                     </div>
@@ -31,11 +48,11 @@ const Login = () => {
                     
                         <div class="input" id="username" >
                             {/* <img src ="../icons/username.png" /> */}
-                            <input type="text" placeholder="Username" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            <input type="text" placeholder="Username" value={email} onChange={(e) => setEmail(e.target.value)} className={` ${usernameIsFilled ? "" : "missing"}`}/>
                         </div>
                         <div class="input" id="password" >
                             {/* <img src ="../icons/password.svg" /> */}
-                            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                            <input type="password"  placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className={` ${passwordIsFilled ? "" : "missing"}`}/>
                         </div>
                     </div>
 

@@ -6,7 +6,8 @@ div{
     flex-direction: column;
     margin:auto;
     padding-top: auto;
-    top:50%;
+    align-items: center;
+    margin-top: 12%;
     padding-bottom: 30px;
     width: 50%;
 }
@@ -25,25 +26,30 @@ div{
     margin-left: auto;
     margin-right: auto;
 }
-.inputs{
+.formBox{
     border-radius: 10px;
     background-color: #ffffff;
     display:flex;
-    gap: 25px;
+    padding-top: -10px;
     flex-direction:column;
     padding: 20px;
     margin-left: auto;
     margin-right: auto;
 }
+
 input::placeholder {
     color: gray;
-    font-style: italic;
+    
   }
 input{
-    width: 225px;
+    padding: 10px;
     height: 30px;
     color:#333;
     border-radius: 8px;
+    border-color:#61C0BF;
+    border-width: 1px;
+    font-size: 16px;
+    width: 300px;
 }
 .buttons{
     display:flex;
@@ -53,9 +59,10 @@ input{
     margin-right: auto;
 }
 #submit{
-    border-style:solid;
+   margin-top: 20px;
+   border: none;
     text-align: center;
-    width: 150px;
+    width: 300px;
     border-radius:8px;
     background-color: #61C0BF;
     margin-left: auto;
@@ -63,5 +70,10 @@ input{
     margin-bottom: 20px;
     font-size: 18px;
     color: #fff;
-
+    font-weight: bold;
+    height: 30px;
+}
+.missing{
+    border: 1px solid red;
+    color:red;
 }
