@@ -60,8 +60,8 @@ const Login = () => {
                         <button type="submit" id="submit">Login</button>
                         {/* <div onClick={handleSubmit} class="button" id="submit">LogIn</div> */}
                         {/* Used html link <a></a> for now just for test. Will change using native react routers when pages are created */}
-                        <div class="link" id=""><a href ="#">Lost Password?</a> </div>
-                        <div class="link" id=""><a href ="#">Lost username?</a> </div>
+                        <div class="link" id=""><a href ="#">Forgot Password?</a> </div>
+                        <div class="link" id=""><a href ="#">Forgot Username?</a> </div>
                         <div id="">Not registered yet? <span class="link"><a href ="#">Sign up</a></span> </div>
                     </div>
                 </div>
