@@ -18,12 +18,15 @@ const Login = () => {
         };
         
     return (
+    <div class="container-out">
+        <div class="top"></div>
         <div class="container">
-            <div class="header">
-               Sign In
-            </div>
+           
             <form onSubmit={handleSubmit}>
                 <div class="inputs">
+                    <div class="header">
+                        Sign In
+                    </div>
                     <div class="inputs">
                     
                         <div class="input" id="username" >
@@ -47,6 +50,8 @@ const Login = () => {
                 </div>
             </form>
         </div>
+        <div class="bottom"></div>
+    </div>
     );
 };
 
