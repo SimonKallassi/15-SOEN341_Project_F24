@@ -42,7 +42,7 @@ input::placeholder {
     
   }
 input{
-    padding: 10px;
+    margin: 10px;
     height: 30px;
     color:#333;
     border-radius: 8px;
