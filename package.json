@@ -14,7 +14,9 @@
     "react-native-svg": "^15.3.0",
     "react-native-svg-transformer": "^1.4.0",
     "react-native-web": "^0.19.12",
-    "react-router-dom": "^6.23.1"
+    "react-password-checklist": "^1.8.0",
+    "react-router-dom": "^6.23.1",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "babel-loader": "^9.1.3",

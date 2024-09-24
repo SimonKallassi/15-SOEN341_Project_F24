@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { isValidElement, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Picker, Alert, ScrollView, Dimensions } from 'react-native';
+import PasswordChecklist from 'react-password-checklist';
 
 const SignUp = () => {
     const [firstname, setFirstname] = useState('');
@@ -7,6 +8,7 @@ const SignUp = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [role, setRole] = useState('student'); // Default to 'student'
 
     const handleSubmit = () => {
@@ -60,7 +62,21 @@ const SignUp = () => {
                         onChangeText={setPassword}
                         placeholderTextColor="#AAB7C4"
                     />
-
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Password Again"
+                        secureTextEntry
+                        value={confirmPassword}
+                        onChangeText={setConfirmPassword}
+                        placeholderTextColor="#AAB7C4"
+                    />
+                    <PasswordChecklist
+                        rules={["minLength", "number", "capital", "match"]}
+                        minLength={8}
+                        value={password}
+                        valueAgain={confirmPassword}
+                        onChange={(isValid) => {}}
+                    />
                     <View style={styles.pickerContainer}>
                         <Text style={styles.pickerLabel}>I am a:</Text>
                         <Picker
