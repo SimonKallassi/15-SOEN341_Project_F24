@@ -19,7 +19,6 @@ const Home = () => {
                     </section>
                     <section class="buttons">
                         <button id="start" onClick={handleLoginClick}><span>Get Started</span></button>
-                        <div id="login"><a href="">Already have an account?</a></div>
                     </section>
                 </main>
             </div>
