@@ -1,75 +1,109 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
+import {StyleSheet, Text, TouchableOpacity} from "react-native";
 
 const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    let usernameIsFilled=true;
-    let passwordIsFilled=true;
+    const [usernameIsFilled, setUsernameIsFilled] = useState(true);
+    const [passwordIsFilled, setPasswordIsFilled] = useState(true);
+
+    const handleSignUpClick = () => {
+        navigate('/SignUpPage');
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        //check that the input is not blank
+        // Reset the validation state before checking
+        setUsernameIsFilled(true);
+        setPasswordIsFilled(true);
+
+        // Check that inputs are not blank
         if (!email && password) {
-            usernameIsFilled=false;
-            passwordIsFilled=true;
+            setUsernameIsFilled(false);
+            setPasswordIsFilled(true);
             alert('Please fill the username.');
             return;
-            
-          }else if(email && !password){
-            usernameIsFilled=true;
-            passwordIsFilled=false;
+        } else if (email && !password) {
+            setUsernameIsFilled(true);
+            setPasswordIsFilled(false);
             alert('Please enter your password.');
             return;
-          }else if(!email && !password){
-            usernameIsFilled=false;
-            passwordIsFilled=false;
-            alert('Please fill the fields.');
+        } else if (!email && !password) {
+            setUsernameIsFilled(false);
+            setPasswordIsFilled(false);
+            alert('Please fill in both fields.');
             return;
-          }
-          usernameIsFilled=false;
-            passwordIsFilled=false;
-          alert('Submit clicked!');
-        };
-        
-    return (
-    <div class="container-out">
-        <div class="top"></div>
-        <div class="container">
-           
-            <form onSubmit={handleSubmit}>
-                <div class="formBox">
-                    <div class="header">
-                        Sign In
-                    </div>
-                    <div class="inputs">
-                    
-                        <div class="input" id="username" >
-                            {/* <img src ="../icons/username.png" /> */}
-                            <input type="text" placeholder="Username" value={email} onChange={(e) => setEmail(e.target.value)} className={` ${usernameIsFilled ? "" : "missing"}`}/>
-                        </div>
-                        <div class="input" id="password" >
-                            {/* <img src ="../icons/password.svg" /> */}
-                            <input type="password"  placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className={` ${passwordIsFilled ? "" : "missing"}`}/>
-                        </div>
-                    </div>
+        }
 
-                    <div class="buttons">
-                        <button type="submit" id="submit">Login</button>
-                        {/* <div onClick={handleSubmit} class="button" id="submit">LogIn</div> */}
-                        {/* Used html link <a></a> for now just for test. Will change using native react routers when pages are created */}
-                        <div class="link" id=""><a href ="#">Forgot Password?</a> </div>
-                        <div class="link" id=""><a href ="#">Forgot Username?</a> </div>
-                        <div id="">Not registered yet? <span class="link"><a href ="#">Sign up</a></span> </div>
+        // If everything is filled, proceed with the submit logic
+        alert('Submit clicked!');
+    };
+
+    return (
+        <div className="container-out">
+            <div className="top"></div>
+            <div className="container">
+                <form onSubmit={handleSubmit}>
+                    <div className="formBox">
+                        <div className="header">
+                            Sign In
+                        </div>
+                        <div className="inputs">
+                            <div className="input" id="username">
+                                <input
+                                    type="text"
+                                    placeholder="Username"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className={usernameIsFilled ? "" : "missing"}
+                                />
+                            </div>
+                            <div className="input" id="password">
+                                <input
+                                    type="password"
+                                    placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className={passwordIsFilled ? "" : "missing"}
+                                />
+                            </div>
+                        </div>
+                        <div className="buttons">
+                            <button type="submit" id="submit">Login</button>
+                            <div className="link" id=""><a href="#">Forgot Password?</a></div>
+                            <div className="link" id=""><a href="#">Forgot Username?</a></div>
+                            <div>
+                                <TouchableOpacity style={styles.button} onPress={handleSignUpClick}>
+                                    <Text style={styles.buttonText}>Sign Up</Text>
+                                </TouchableOpacity>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
+            <div className="bottom"></div>
         </div>
-        <div class="bottom"></div>
-    </div>
     );
 };
+
+
+
+const styles = StyleSheet.create({button: {
+        backgroundColor: '#61C0BF',
+        paddingVertical: 15,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginTop: 20,
+    },
+    buttonText: {
+        fontSize: 18,
+        color: '#fff',
+        fontWeight: 'bold',
+    },
+});
 
 export default Login;
