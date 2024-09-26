@@ -8,6 +8,10 @@ const Home = () => {
     const handleLoginClick = () => {
         navigate('/LoginPage');
     }
+
+    const handleSignUpClick = () => {
+        navigate('/SignUpPage');
+    }
     return (
         <div>
             <main style={{ padding: '20px' }}>
@@ -18,6 +22,7 @@ const Home = () => {
                 <section>
                     <h2>Teacher and Students</h2>
                     <button onClick={handleLoginClick}>Go To Login Page</button>
+                    <button onClick={handleSignUpClick}>Go To SignUp Page</button>
                 </section>
             </main>
         </div>
