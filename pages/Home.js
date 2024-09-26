@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Home.css';
 
 const Home = () => {
 
@@ -8,24 +9,24 @@ const Home = () => {
     const handleLoginClick = () => {
         navigate('/LoginPage');
     }
-
-    const handleSignUpClick = () => {
-        navigate('/SignUpPage');
-    }
     return (
-        <div>
-            <main style={{ padding: '20px' }}>
-                <section>
-                    <h1>Welcome to PeerEvaluator.</h1>
-                    <p>To help evaluate your peers.</p>
-                </section>
-                <section>
-                    <h2>Teacher and Students</h2>
-                    <button onClick={handleLoginClick}>Go To Login Page</button>
-                    <button onClick={handleSignUpClick}>Go To SignUp Page</button>
-                </section>
-            </main>
+        <div className="split">
+            <div className="left">
+                <main style={{ padding: '20px' }}>
+                    <section>
+                        <h1 class="title">Welcome to <br></br><span id="name"> PeerEvaluator</span></h1>
+                        <h3 class="slogan">To help evaluate your peers</h3>
+                    </section>
+                    <section class="buttons">
+                        <button id="start" onClick={handleLoginClick}><span>Get Started</span></button>
+                    </section>
+                </main>
+            </div>
+            <div className="right">
+                <img className="home-image" src="https://images.vexels.com/media/users/3/139257/isolated/preview/b8fa8f291632f8fe68842e4fb100d8e0-square-rectangle-shape.png" alt="image placeholder"/>
+            </div>
         </div>
+        
     );
 };
 
