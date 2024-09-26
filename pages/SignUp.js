@@ -112,7 +112,8 @@ const styles = StyleSheet.create({
         minHeight: height,
     },
     formContainer: {
-        width: '40%',
+        width: 'auto',
+        maxWidth: 400,
         backgroundColor: '#ffffff',
         padding: 20,
         borderRadius: 10,
@@ -121,6 +122,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 5,
         elevation: 5,
+        alignItems: 'center',
     },
     title: {
         fontSize: 32,
@@ -141,6 +143,7 @@ const styles = StyleSheet.create({
     },
     pickerContainer: {
         marginVertical: 15,
+        width: '100%',
     },
     pickerLabel: {
         fontSize: 18,
@@ -150,6 +153,7 @@ const styles = StyleSheet.create({
     },
     picker: {
         height: 50,
+        width: '100%',
         color: '#034f84',
         borderWidth: 1,
         borderColor: '#61C0BF',
@@ -160,6 +164,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         alignItems: 'center',
         marginTop: 20,
+        width: '100%',
     },
     buttonText: {
         fontSize: 18,
