@@ -7,7 +7,6 @@
     "web": "webpack serve --config webpack.config.js"
   },
   "dependencies": {
-    "css-loader": "^7.1.2",
     "metro-react-native-babel-preset": "^0.77.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -15,8 +14,9 @@
     "react-native-svg": "^15.3.0",
     "react-native-svg-transformer": "^1.4.0",
     "react-native-web": "^0.19.12",
+    "react-password-checklist": "^1.8.0",
     "react-router-dom": "^6.23.1",
-    "style-loader": "^4.0.0"
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "babel-loader": "^9.1.3",
