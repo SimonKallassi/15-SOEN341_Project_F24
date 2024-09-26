@@ -1,6 +1,14 @@
 div{
     font-family:Arial;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #EAF6F6; /* Light blue background */
+}
+
 .container{
     display:flex;
     flex-direction: column;
@@ -13,8 +21,7 @@ div{
 }
 .container-out{
     background:#EAF6F6;
-    height: 100vh;
-    
+
 }
 .header{
     font-size: 32px;
@@ -39,7 +46,7 @@ div{
 
 input::placeholder {
     color: gray;
-    
+
   }
 input{
     margin: 10px;
