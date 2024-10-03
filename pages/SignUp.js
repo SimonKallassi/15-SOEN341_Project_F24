@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
-import PasswordStrengthBar from 'react-password-strength-bar';
-import dynamic from 'next/dynamic';
-
-const PasswordChecklist = dynamic(() => import('react-password-checklist'), { ssr: false });
-
+import React, { isValidElement, useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Picker, Alert, ScrollView, Dimensions } from 'react-native';
+import PasswordChecklist from 'react-password-checklist';
 
 const SignUp = () => {
     const [firstname, setFirstname] = useState('');
@@ -13,125 +10,118 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [role, setRole] = useState('student'); // Default to 'student'
-    const [passwordsMatch, setPasswordsMatch] = useState(true); // Track if passwords match
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (firstname && lastname && username && email && password && confirmPassword) {
-                alert(`Sign Up Successful! Welcome, ${firstname} ${lastname}`);
-                // Handle form submission logic here (e.g., send data to the server)
-
+    const handleSubmit = () => {
+        if (firstname && lastname && username && email && password) {
+            Alert.alert("Sign Up Successful!", `Welcome, ${firstname} ${lastname}`);
+            // Here you can handle form submission, e.g., save the data or send it to a server
         } else {
-            alert("Please fill in all the fields");
+            Alert.alert("Error", "Please fill in all the fields");
         }
     };
 
     return (
-        <div style={styles.container}>
-            <div style={styles.formContainer}>
-                <h1 style={styles.title}>Sign Up</h1>
-                <form onSubmit={handleSubmit}>
-                    <input
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <View style={styles.container}>
+                <View style={styles.formContainer}>
+                    <Text style={styles.title}>Sign Up</Text>
+                    <TextInput
                         style={styles.input}
-                        type="text"
                         placeholder="First name"
                         value={firstname}
-                        onChange={(e) => setFirstname(e.target.value)}
-                        required
+                        onChangeText={setFirstname}
+                        placeholderTextColor="#AAB7C4"
                     />
-                    <input
+                    <TextInput
                         style={styles.input}
-                        type="text"
                         placeholder="Last name"
                         value={lastname}
-                        onChange={(e) => setLastname(e.target.value)}
-                        required
+                        onChangeText={setLastname}
+                        placeholderTextColor="#AAB7C4"
                     />
-                    <input
+                    <TextInput
                         style={styles.input}
-                        type="text"
                         placeholder="Username"
                         value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
+                        onChangeText={setUsername}
+                        placeholderTextColor="#AAB7C4"
                     />
-                    <input
+                    <TextInput
                         style={styles.input}
-                        type="email"
                         placeholder="Email"
+                        keyboardType="email-address"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
+                        onChangeText={setEmail}
+                        placeholderTextColor="#AAB7C4"
                     />
-                    <input
+                    <TextInput
                         style={styles.input}
-                        type="password"
                         placeholder="Password"
+                        secureTextEntry
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
+                        onChangeText={setPassword}
+                        placeholderTextColor="#AAB7C4"
                     />
-                    {/* Password strength bar */}
-                    <PasswordStrengthBar password={password} />
-                    <input
+                    <TextInput
                         style={styles.input}
-                        type="password"
-                        placeholder="Confirm Password"
+                        placeholder="Password Again"
+                        secureTextEntry
                         value={confirmPassword}
-                        onChange={(e) => {
-                            setConfirmPassword(e.target.value);
-                            setPasswordsMatch(e.target.value === password);
-                        }}
-                        required
+                        onChangeText={setConfirmPassword}
+                        placeholderTextColor="#AAB7C4"
                     />
-
-                    {/* Password checklist */}
                     <PasswordChecklist
                         rules={["minLength", "number", "capital", "match"]}
                         minLength={8}
                         value={password}
                         valueAgain={confirmPassword}
-                        onChange={(isValid) => setPasswordsMatch(isValid)}
+                        onChange={(isValid) => {}}
                     />
-                    <div style={styles.pickerContainer}>
-                        <label style={styles.pickerLabel}>I am a:</label>
-                        <select
+                    <View style={styles.pickerContainer}>
+                        <Text style={styles.pickerLabel}>I am a:</Text>
+                        <Picker
+                            selectedValue={role}
                             style={styles.picker}
-                            value={role}
-                            onChange={(e) => setRole(e.target.value)}
+                            onValueChange={(itemValue) => setRole(itemValue)}
                         >
-                            <option value="student">Student</option>
-                            <option value="teacher">Teacher</option>
-                        </select>
-                    </div>
+                            <Picker.Item label="Student" value="student" />
+                            <Picker.Item label="Teacher" value="teacher" />
+                        </Picker>
+                    </View>
 
-                    <button type="submit" style={styles.button}>
-                        <span style={styles.buttonText}>Sign Up</span>
-                    </button>
-                </form>
-            </div>
-        </div>
+                    <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+                        <Text style={styles.buttonText}>Sign Up</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </ScrollView>
     );
 };
 
-const styles = {
+const { height } = Dimensions.get('window');
+
+const styles = StyleSheet.create({
+    scrollContainer: {
+        flexGrow: 1,
+    },
     container: {
         flex: 1,
         backgroundColor: '#EAF6F6',
-        display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh',
+        minHeight: height,
     },
     formContainer: {
-        width: '100%',
+        width: 'auto',
         maxWidth: 400,
         backgroundColor: '#ffffff',
         padding: 20,
         borderRadius: 10,
-        boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-        display: 'flex',
-        flexDirection: 'column',
+        shadowColor: '#fff',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        elevation: 5,
         alignItems: 'center',
     },
     title: {
@@ -142,23 +132,18 @@ const styles = {
         marginBottom: 20,
     },
     input: {
-        width: '100%',
+        borderWidth: 1,
+        borderColor: '#61C0BF',
+        backgroundColor: '#fff',
+        borderRadius: 8,
         padding: 10,
         marginBottom: 15,
-        borderRadius: 8,
-        border: '1px solid #61C0BF',
         fontSize: 16,
         color: '#333',
-        boxSizing: 'border-box',
-    },
-    error: {
-        color: 'red',
-        fontWeight: 'bold',
     },
     pickerContainer: {
         marginVertical: 15,
         width: '100%',
-        marginBottom: 15,
     },
     pickerLabel: {
         fontSize: 18,
@@ -167,26 +152,25 @@ const styles = {
         marginBottom: 5,
     },
     picker: {
+        height: 50,
         width: '100%',
-        padding: 10,
-        borderRadius: 8,
-        border: '1px solid #61C0BF',
         color: '#034f84',
+        borderWidth: 1,
+        borderColor: '#61C0BF',
     },
     button: {
-        backgroundColor: '#61C0BF',
+        backgroundColor: '#61C0BF', 
         paddingVertical: 15,
         borderRadius: 8,
+        alignItems: 'center',
         marginTop: 20,
         width: '100%',
-        textAlign: 'center',
-        cursor: 'pointer',
     },
     buttonText: {
-        fontSize: 40,
+        fontSize: 18,
         color: '#fff',
         fontWeight: 'bold',
     },
-};
+});
 
 export default SignUp;
