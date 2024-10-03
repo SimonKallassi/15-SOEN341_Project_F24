@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../styles/Login.css';
+import Link from 'next/link';
 import {StyleSheet, Text, TouchableOpacity} from "react-native";
 
 const Login = () => {
-    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [usernameIsFilled, setUsernameIsFilled] = useState(true);
     const [passwordIsFilled, setPasswordIsFilled] = useState(true);
-
-    const handleSignUpClick = () => {
-        navigate('/SignUpPage');
-    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -77,9 +71,11 @@ const Login = () => {
                             <div className="link" id=""><a href="#">Forgot Password?</a></div>
                             <div className="link" id=""><a href="#">Forgot Username?</a></div>
                             <div>
-                                <TouchableOpacity style={styles.button} onPress={handleSignUpClick}>
-                                    <Text style={styles.buttonText}>Sign Up</Text>
-                                </TouchableOpacity>
+                                <Link href='/SignUp'>
+                                    <TouchableOpacity style={styles.button}>
+                                        <Text style={styles.buttonText}>Sign Up</Text>
+                                    </TouchableOpacity>
+                                </Link>
                             </div>
                         </div>
                     </div>
