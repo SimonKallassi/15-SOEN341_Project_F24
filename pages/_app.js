@@ -3,7 +3,7 @@ import '../styles/globals.css'; // Import global CSS
 import Link from 'next/link';
 import '../styles/Home.css';
 import '../styles/Login.css';
-import '../styles/test.css';
+import '../styles/Dashboard.css';
 import '../styles/styles.css';
 
 
