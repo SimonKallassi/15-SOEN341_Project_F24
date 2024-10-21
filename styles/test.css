@@ -1,0 +1,24 @@
+#course{
+    border:solid;
+    display:inline-block;
+    margin-right: 50px;
+    height: 100px;
+    text-align:center;
+    width:300px;
+    border-width: 1px;
+     border-radius: 0.5rem;
+    overflow: hidden;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    padding-top: 20px;
+}
+#out{
+    
+    border:solid;
+    border-width: 1px;
+    width:1200px;
+    text-align: center;
+    margin-left: auto;
+    
+  margin-right: auto;
+}
