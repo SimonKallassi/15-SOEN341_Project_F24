@@ -28,5 +28,9 @@ ul {
 li {
     list-style: none;
 }
+select{
+    height: 30px;
+    border-radius: 8px;
+}
 
 
