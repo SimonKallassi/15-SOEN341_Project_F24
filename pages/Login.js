@@ -67,7 +67,7 @@ const Login = () => {
                             </div>
                         </div>
                         <div className="buttons">
-                            <Link href='/App'>
+                            <Link href='/Dashboard'>
                             <button type="submit" id="submit">Login</button>
                             </Link>
                             <div className="link" id=""><a href="#">Forgot Password?</a></div>
