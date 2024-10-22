@@ -1,4 +1,4 @@
-import CourseList from './CourseList';
+import CourseList from './TeacherCourseList';
 
 // Dummy data
 const courses = [
