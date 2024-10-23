@@ -1,7 +1,7 @@
 # SOEN341
 Peer Evaluation Website<br/>
 
-Description<br/>
+## Description<br/>
 
 A Peer Assessment System for university team projects is designed to allow students to evaluate the contributions and performance of their teammates based on four key dimensions:<br/>
 cooperation, conceptual contribution, practical contribution, and work ethic. <br/>
@@ -9,7 +9,7 @@ The system promotes accountability and provides valuable feedback to both studen
 
 We identify two primary users: Students and Instructors.<br/>
 
-System Features:<br/>
+## System Features:<br/>
 1.	Students assessment:<br/>
    -Students log into the system and are prompted to evaluate each of their teammates at the end of a project or key milestones.<br/>
    -Evaluation is conducted anonymously to encourage honest and constructive feedback.<br/>
@@ -22,10 +22,22 @@ System Features:<br/>
 4.	Instructor Dashboard:<br/>
    -Instructors have access to a dashboard that allows them to create teams, and at the end of an evaluation to show detailed peer assessment results by team, by student, and a summary of results. The results can be exported for further use as CSV file.<br/>
 
-Team Members:<br/>
-Najmuddin Nazary - 40211776<br/>
-Simon Kallassi - 40121987<br/>
-Youssef Marzouk - 40263812<br/>
-Paoleno Nikyema-40127111<br/>
+## Installation
+
+To set up the Peer Evaluation Website, follow these steps:
+
+1. Clone the repository into your integrated development environment (IDE)
+2. Navigate to the project directory
+3. Install dependencies: `npm install`
+4. Start the development server: `npm run dev`
+5. Click on the link `http://localhost:3000`
+
+Note: Ensure that you have Node.js and npm installed on your machine before proceeding with the installation.
+
+## Team Members:<br/>
+Najmuddin Nazary  - 40211776<br/>
+Simon Kallassi    - 40121987<br/>
+Youssef Marzouk   - 40263812<br/>
+Paoleno Nikyema   - 40127111<br/>
 Edward Villamaria - 40172621<br/>
-Bushr Eiddo - 40099316<br/>
+Bushr Eiddo       - 40099316<br/>
