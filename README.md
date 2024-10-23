@@ -1,5 +1,4 @@
-# SOEN341
-Peer Evaluation Website<br/>
+# A SOEN341 Project - Peer Evaluation Website<br/>
 
 ## Description<br/>
 
