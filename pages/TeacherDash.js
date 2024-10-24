@@ -14,7 +14,7 @@ const App = () => {
     
     <div>
       <div> 
-        <h1 id="dashboard-title">Dashboard</h1> 
+        <h1 id="dashboard-title">Welcome to the Instructor Dashboard</h1>
       <CourseList courses={courses} />
       </div> 
     </div>
