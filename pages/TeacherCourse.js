@@ -32,15 +32,22 @@ function StudentList({ students }) {
     };
 
     return (
+        
         <div className="container-student">
+            <h1>Teams List:</h1>
+            <button id = "create-teams" onClick={togglePopup}>Create Teams</button>
+            <ul>
+                {teams.map((team, index) => (
+                    <li key={index}>
+                        Team {index + 1}: {team.join(', ')}
+                    </li>
+                ))}
+            </ul>
             <h1 className="h1">Students Enrolled</h1>
-            <button onClick={togglePopup}>Create Teams</button>
-
             <div>
                 {students.map(student => (
                     <div
                         key={student.id}
-                        onClick={() => setSelectedStudent(student)}
                         className="student-item"
                         style={{ backgroundImage: 'url(${student.imagePath})' }}
                     >
@@ -81,15 +88,6 @@ function StudentList({ students }) {
                     </div>
                 </div>
             )}
-
-            <h2>Teams List:</h2>
-            <ul>
-                {teams.map((team, index) => (
-                    <li key={index}>
-                        Team {index + 1}: {team.join(', ')}
-                    </li>
-                ))}
-            </ul>
         </div>
     );
 }
