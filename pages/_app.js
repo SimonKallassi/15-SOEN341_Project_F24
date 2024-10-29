@@ -4,6 +4,7 @@ import Link from 'next/link';
 import '../styles/Home.css';
 import '../styles/Login.css';
 import '../styles/teacherDashboard.css';
+import '../styles/teachercourse.css';
 
 const Header = () => {
     return (
