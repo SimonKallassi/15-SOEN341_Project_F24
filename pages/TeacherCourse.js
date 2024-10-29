@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import StudentDetails from './StudentDetails';
 
 function StudentList({ students }) {
