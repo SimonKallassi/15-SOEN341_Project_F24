@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 // Importing StudentDetails into the parent component
 import StudentDetails from './StudentDetails';
 
@@ -10,9 +11,12 @@ function StudentList({ students }) {
     return (
         <div className="container-student">
             <h1 className="h1">Students Enrolled</h1>
+            <Link href="/teamcreate">
+                <button>Create Teams</button>
+            </Link>
             <div>
                 {students.map(student => (
-                    <div key={student.id} onClick={() => setSelectedStudent(student)} className="student-item" style={{ backgroundImage: `url(${student.imagePath})` }}>
+                    <div key={student.id} onClick={() => setSelectedStudent(student)} className="student-item" style={{ backgroundImage: 'url(${student.imagePath})' }}>
                         <div style={{ background: 'rgba(255, 255, 255, 0.8)', padding: '10px' }}>{student.name}</div>
                     </div>
                 ))}

@@ -1,29 +1,23 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-// Importing StudentDetails into the parent component
-import StudentDetails from './StudentDetails';
+import { useRouter } from 'next/router';
+import StudentList from './TeacherCourse';
 
-//import './styles/styles.css'; // Make sure the path is correct
+// Dummy data
+const students = [
+  { id: 1, courseId: 1, name: 'Fahad Abdul Rahman', ratings: [{ subject: 'Teamwork', score: 8 }] },
+  { id: 2, courseId: 1, name: 'Oyeyimika Adeoye', ratings: [{ subject: 'Teamwork', score: 7 }] },
+  { id: 3, courseId: 2, name: 'John Doe', ratings: [{ subject: 'Communication', score: 9 }] },
+  // More students...
+];
 
-function StudentList({ students }) {
-    const [selectedStudent, setSelectedStudent] = useState(null);
+const CourseStudentsPage = () => {
+  const router = useRouter();
+  const { courseId } = router.query; // Get the dynamic courseId from the URL
 
-    return (
-        <div className="container-student">
-            <h1 className="h1">Students Enrolled</h1>
-            <Link href="/teamcreate">
-                <button>Create Teams</button>
-            </Link>
-            <div>
-                {students.map(student => (
-                    <div key={student.id} onClick={() => setSelectedStudent(student)} className="student-item" style={{ backgroundImage: `url(${student.imagePath})` }}>
-                        <div style={{ background: 'rgba(255, 255, 255, 0.8)', padding: '10px' }}>{student.name}</div>
-                    </div>
-                ))}
-            </div>
-            {selectedStudent && <StudentDetails student={selectedStudent} />}
-        </div>
-    );
-}
+  return (
+    <div>
+      <StudentList students={students} courseId={courseId} />
+    </div>
+  );
+};
 
-export default StudentList;
+export default CourseStudentsPage
