@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import StudentList from './StudentList';
+import StudentList from './TeacherCourse';
 
 // Dummy data
 const students = [
