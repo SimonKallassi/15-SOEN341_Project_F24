@@ -31,11 +31,11 @@
     margin-top: 10px;
 }
 
-.create-teams button{
+#create-teams{
     margin-top: 20px;
-   border: none;
+    border: none;
     text-align: center;
-    width: 300px;
+    width: 150px;
     border-radius:8px;
     background-color: #61C0BF;
     margin-left: auto;
