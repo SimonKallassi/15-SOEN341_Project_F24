@@ -1,0 +1,18 @@
+Meeting #7 - 2024/10/03 Started at 18h30 ended at 20h00
+
+Collaborators present:
+Najmuddin Nazary - 40211776
+Bushr Eiddo - 40099316
+Edward Villamaria - 40172621
+Simon Kallassi - 40121987
+Paoleno Nikyema - 40127111
+Youssef Marzouk - 40263812
+
+Collaborators absent:
+
+N/A
+
+Notes:
+Youssef, Simon, Paoleno: Found issues on the product with the transition to NextJs (Solution: Delete .nodemodules on the main branch and redownload node with npm install)
+Simon: Showed the customer the product for the Sprint 1
+All: Explained their part and the contribution for Sprint 1
