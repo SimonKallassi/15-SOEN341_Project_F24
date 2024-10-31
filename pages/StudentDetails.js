@@ -12,7 +12,7 @@ function StudentDetails({ student }) {
         { category: 'Dependability', score: student.ratings?.Dependability || '' }
     ]);
 
-    const [maxScore, setMaxScore] = useState(10);  // Maximum score for the ratings
+    const [maxScore, setMaxScore] = useState(5);  // Maximum score for the ratings
 
     // Function to handle changes in ratings
     const handleRatingChange = (index, newScore) => {

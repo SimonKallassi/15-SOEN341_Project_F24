@@ -1,5 +1,6 @@
 import CourseList from './CourseList';
 
+
 // Dummy data
 const courses = [
   { id: 1, name: 'COEN 317 F 2242', description: 'Electrical & Computer Engineering' },
@@ -15,6 +16,7 @@ const App = () => {
     <div>
       <div> 
         <h1 id="dashboard-title">Dashboard</h1> 
+        
       <CourseList courses={courses} />
       </div> 
     </div>
