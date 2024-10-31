@@ -26,8 +26,8 @@ function StudentList({ students }) {
         const teamMembers = Array.from(selectedStudents);
         if (teamMembers.length > 0) {
             setTeams([...teams, teamMembers]);
-            setPopupOpen(false); // Close the popup
-            setSelectedStudents(new Set()); // Reset selected students
+            setPopupOpen(false);
+            setSelectedStudents(new Set());
         }
     };
 
