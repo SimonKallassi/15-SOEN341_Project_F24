@@ -22,16 +22,25 @@ We identify two primary users: Students and Instructors.<br/>
    -Instructors have access to a dashboard that allows them to create teams, and at the end of an evaluation to show detailed peer assessment results by team, by student, and a summary of results. The results can be exported for further use as CSV file.<br/>
 
 ## Installation
+Before instaling, ensure you have:
+- **Node.js** (version 14 or higher recommended)
+- **npm** (Node Package Manager)
 
 To set up the Peer Evaluation Website, follow these steps:
 
 1. Clone the repository into your integrated development environment (IDE)
+      ```
+      git clone https://github.com/SimonKallassi/15-SOEN341_Project_F24.git
 2. Navigate to the project directory
-3. Install dependencies: `npm install`
-4. Start the development server: `npm run dev`
-5. Click on the link `http://localhost:3000`
-
-Note: Ensure that you have Node.js and npm installed on your machine before proceeding with the installation.
+      ```
+      cd 15-SOEN341_Project_F24
+4. Install dependencies
+      ```
+      npm install
+5. Start the development server:
+      ```
+      npm run dev
+6. Open http://localhost:3000 in your browser to view the application
 
 ## Team Members:<br/>
 Najmuddin Nazary  - 40211776<br/>
