@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 //import styles from '../styles/styles.module.css';  // Ensure this is linked correctly in your project
 
 function StudentDetails({ student }) {
+    const router = useRouter();
     // Initialize ratings with default values if student.ratings doesn't exist
     const [ratings, setRatings] = useState([
         { category: 'Teamwork', score: student.ratings?.Teamwork || '' },
@@ -27,7 +29,12 @@ function StudentDetails({ student }) {
 
     // Function to save the ratings
     const handleSave = () => {
-        console.log('Saving ratings:', ratings);
+        const userConfirmed = window.confirm("Are you sure you want to submit?");
+        if (userConfirmed) {
+          
+            router.back();
+        }
+        // console.log('Saving ratings:', ratings);
         // Implement save functionality here
         // This could be an API call or local state update depending on your application setup
     };
