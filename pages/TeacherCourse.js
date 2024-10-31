@@ -32,24 +32,25 @@ function StudentList({ students }) {
     };
 
     return (
-        
         <div className="container-student">
-            <h1>Teams List:</h1>
-            <button id = "create-teams" onClick={togglePopup}>Create Teams</button>
-            <ul>
+            <button id="create-teams" onClick={togglePopup}>Create Teams</button>
+
+            <div className="team-list">
+                <h2>Teams List:</h2>
                 {teams.map((team, index) => (
-                    <li key={index}>
+                    <div key={index} className="team-item">
                         Team {index + 1}: {team.join(', ')}
-                    </li>
+                    </div>
                 ))}
-            </ul>
-            <h1 className="h1">Students Enrolled</h1>
+            </div>
+
+            <h1 className="enrolled">Students Enrolled</h1>
             <div>
                 {students.map(student => (
                     <div
                         key={student.id}
                         className="student-item"
-                        style={{ backgroundImage: 'url(${student.imagePath})' }}
+                        style={{ backgroundImage: `url(${student.imagePath})` }}
                     >
                         <div style={{ background: 'rgba(255, 255, 255, 0.8)', padding: '10px' }}>
                             {student.name}
