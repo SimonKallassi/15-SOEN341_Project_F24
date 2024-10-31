@@ -59,41 +59,62 @@ To set up the Peer Evaluation Website on your local machine, follow these steps:
    Open your terminal or IDE and enter the following command to clone the project repository:<br/>
    ```bash
    git clone https://github.com/SimonKallassi/15-SOEN341_Project_F24.git
-Navigate to the project directory<br/> Change your working directory to the project’s folder:<br/>
+## Installation Guide
 
+To set up the Peer Evaluation Website on your local machine, follow these steps:
 
-cd 15-SOEN341_Project_F24
-Install project dependencies<br/> Install all necessary packages using npm:<br/>
+1. **Navigate to the project directory**  
+   Change your working directory to the project’s folder:
+   ```bash
+   cd 15-SOEN341_Project_F24
+   ```
 
+2. **Install project dependencies**  
+   Install all necessary packages using npm:
+   ```bash
+   npm install
+   ```
 
-npm install
-Configure the environment (optional)<br/> If there are any environment variables (e.g., database connections, API keys), create a .env file in the project root and populate it with the required details. Make sure to check the documentation or contact the team for specific configurations.<br/>
+3. **Configure the environment (optional)**  
+   If there are any environment variables (e.g., database connections, API keys), create a `.env` file in the project root and populate it with the required details. Make sure to check the documentation or contact the team for specific configurations.
 
-Start the development server<br/> Launch the server by running:<br/>
+4. **Start the development server**  
+   Launch the server by running:
+   ```bash
+   npm run dev
+   ```
+   This command will start the development environment, and you can view the application by opening [http://localhost:3000](http://localhost:3000) in your browser.
 
+---
 
-npm run dev
-This command will start the development environment, and you can view the application by opening http://localhost:3000 in your browser.<br/>
+## Usage
 
-Usage<br/>
-Log In / Sign Up<br/> New users can sign up, while existing users can log in using their credentials.<br/>
+1. **Log In / Sign Up**  
+   New users can sign up, while existing users can log in using their credentials.
 
-Joining Teams<br/> Students are added to their respective teams by instructors, who assign them based on project requirements.<br/>
+2. **Joining Teams**  
+   Students are added to their respective teams by instructors, who assign them based on project requirements.
 
-Submitting Peer Evaluations<br/> After each project or milestone, students fill out evaluations for their teammates, rating them on the specified criteria.<br/>
+3. **Submitting Peer Evaluations**  
+   After each project or milestone, students fill out evaluations for their teammates, rating them on the specified criteria.
 
-Viewing Feedback<br/> After evaluations are submitted and processed, students can review anonymous feedback, and instructors receive comprehensive performance summaries.<br/>
+4. **Viewing Feedback**  
+   After evaluations are submitted and processed, students can review anonymous feedback, and instructors receive comprehensive performance summaries.
 
-Troubleshooting<br/>
-Dependencies Not Installing:<br/> If npm install fails, ensure your Node.js and npm versions are up-to-date. Run:<br/>
+---
 
+## Troubleshooting
 
-node -v
-npm -v
-Then retry the installation process.<br/>
+- **Dependencies Not Installing**:  
+   If `npm install` fails, ensure your Node.js and npm versions are up-to-date. Run:
+   ```bash
+   node -v
+   npm -v
+   ```
+   Then retry the installation process.
 
-Server Not Starting:<br/> If the server does not start, ensure there are no port conflicts or missing environment variables. Double-check your .env file, if applicable.<br/>
-
+- **Server Not Starting**:  
+   If the server does not start, ensure there are no port conflicts or missing environment variables. Double-check your `.env` file, if applicable.
 Team Members<br/>
 Najmuddin Nazary - 40211776<br/>
 Simon Kallassi - 40121987<br/>
