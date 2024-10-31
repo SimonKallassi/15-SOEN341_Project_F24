@@ -7,8 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
-    "test": "jest --maxWorkers=2"
     "test": "jest --maxWorkers=2 --verbose"
   },
   "dependencies": {
@@ -41,3 +39,4 @@
     "webpack-dev-server": "^5.0.4"
   }
 }
+
