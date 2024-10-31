@@ -7,8 +7,8 @@ const Home = () => {
             <div className="left">
                 <main style={{ padding: '20px' }}>
                     <section>
-                        <h1 class="title">Welcome to <br></br><span id="name"> PeerEvaluator</span></h1>
-                        <h3 class="slogan">To help evaluate your peers</h3>
+                        <h1 className="title">Welcome to <br></br><span id="name"> PeerEvaluator</span></h1>
+                        <h3 className="slogan">To help evaluate your peers</h3>
                     </section>
                     <section className="buttons">
                         <Link href="/Login">
