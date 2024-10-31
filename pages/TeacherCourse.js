@@ -34,7 +34,6 @@ function StudentList({ students }) {
     return (
         <div className="container-student">
             <button id="create-teams" onClick={togglePopup}>Create Teams</button>
-
             <div className="team-list">
                 <h2>Teams List:</h2>
                 {teams.map((team, index) => (
@@ -43,24 +42,20 @@ function StudentList({ students }) {
                     </div>
                 ))}
             </div>
-
             <h1 className="enrolled">Students Enrolled</h1>
             <div>
                 {students.map(student => (
                     <div
                         key={student.id}
                         className="student-item"
-                        style={{ backgroundImage: `url(${student.imagePath})` }}
-                    >
+                        style={{ backgroundImage: `url(${student.imagePath})` }}>
                         <div style={{ background: 'rgba(255, 255, 255, 0.8)', padding: '10px' }}>
                             {student.name}
                         </div>
                     </div>
                 ))}
             </div>
-
             {selectedStudent && <StudentDetails student={selectedStudent} />}
-
             {isPopupOpen && (
                 <div className="popup-overlay">
                     <div className="popup">
@@ -74,17 +69,14 @@ function StudentList({ students }) {
                                             <input
                                                 type="checkbox"
                                                 checked={selectedStudents.has(student.id)}
-                                                onChange={() => handleCheckboxChange(student.id)}
-                                            />
+                                                onChange={() => handleCheckboxChange(student.id)}/>
                                             {student.name}
                                         </label>
                                     </div>
                                 ))}
                             </div>
                             <button type="submit">Create Team</button>
-                            <button type="button" onClick={togglePopup}>
-                                Cancel
-                            </button>
+                            <button type="button" onClick={togglePopup}>Cancel</button>
                         </form>
                     </div>
                 </div>
