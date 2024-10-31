@@ -4,7 +4,6 @@ import dynamic from 'next/dynamic';
 
 const PasswordChecklist = dynamic(() => import('react-password-checklist'), { ssr: false });
 
-
 const SignUp = () => {
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
@@ -12,17 +11,17 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [role, setRole] = useState('student'); // Default to 'student'
-    const [passwordsMatch, setPasswordsMatch] = useState(true); // Track if passwords match
+    const [role, setRole] = useState('student');
+    const [passwordsMatch, setPasswordsMatch] = useState(true);
+    const [errorMessage, setErrorMessage] = useState('Please fill in all the fields'); // Display error by default
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (firstname && lastname && username && email && password && confirmPassword) {
-                alert(`Sign Up Successful! Welcome, ${firstname} ${lastname}`);
-                // Handle form submission logic here (e.g., send data to the server)
-
+            setErrorMessage(''); // Clear error message on success
+            alert(`Sign Up Successful! Welcome, ${firstname} ${lastname}`);
         } else {
-            alert("Please fill in all the fields");
+            setErrorMessage('Please fill in all the fields'); // Show error if fields are missing
         }
     };
 
@@ -71,7 +70,6 @@ const SignUp = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
-                    {/* Password strength bar */}
                     <PasswordStrengthBar password={password} />
                     <input
                         style={styles.input}
@@ -84,8 +82,6 @@ const SignUp = () => {
                         }}
                         required
                     />
-
-                    {/* Password checklist */}
                     <PasswordChecklist
                         rules={["minLength", "number", "capital", "match"]}
                         minLength={8}
@@ -105,7 +101,12 @@ const SignUp = () => {
                         </select>
                     </div>
 
-                    <button type="submit" style={styles.button}>
+                    {/* Always render error message for testing */}
+                    <p data-testid="error-message" style={styles.error}>
+                        {errorMessage}
+                    </p>
+
+                    <button type="submit" style={styles.button} data-testid="sign-up-button">
                         <span style={styles.buttonText}>Sign Up</span>
                     </button>
                 </form>
