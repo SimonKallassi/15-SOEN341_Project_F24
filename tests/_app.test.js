@@ -6,4 +6,5 @@ test("Renders header with navigation links", () => {
     render(<MyApp Component={() => <div />} pageProps={{}} />);
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Login")).toBeInTheDocument();
+    expect(screen.getByText("Sign Up")).toBeInTheDocument();
 });
