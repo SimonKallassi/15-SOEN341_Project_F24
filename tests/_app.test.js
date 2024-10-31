@@ -3,5 +3,6 @@ import MyApp from '../pages/_app';
 import '@testing-library/jest-dom';
 
 test("Renders header with navigation links", () => {
+    render(<MyApp Component={() => <div />} pageProps={{}} />);
     
 });
