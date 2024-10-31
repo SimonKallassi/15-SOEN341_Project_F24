@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest"
+    "test": "jest --maxWorkers=2"
+    "test": "jest --maxWorkers=2 --verbose"
   },
   "dependencies": {
     "metro-react-native-babel-preset": "^0.77.0",
