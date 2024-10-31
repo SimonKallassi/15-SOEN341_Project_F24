@@ -9,3 +9,10 @@ test("Shows error if username is empty", () => {
     fireEvent.click(screen.getByText("Login"));
     expect(window.alert).toHaveBeenCalledWith('Please fill the username.'); // Check alert content
 });
+
+test("Shows error if password is empty", () => {
+    render(<Login />);
+    fireEvent.change(screen.getByPlaceholderText("Username"), { target: { value: "user@example.com" } });
+    fireEvent.click(screen.getByText("Login"));
+    expect(window.alert).toHaveBeenCalledWith('Please enter your password.'); // Check alert content
+});
