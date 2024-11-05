@@ -115,12 +115,13 @@ To set up the Peer Evaluation Website on your local machine, follow these steps:
 
 - **Server Not Starting**:  
    If the server does not start, ensure there are no port conflicts or missing environment variables. Double-check your `.env` file, if applicable.
-Team Members<br/>
-Najmuddin Nazary - 40211776<br/>
-Simon Kallassi - 40121987<br/>
-Youssef Marzouk - 40263812<br/>
-Paoleno Nikyema - 40127111<br/>
-Edward Villamaria - 40172621<br/>
-Bushr Eiddo - 40099316<br/>
+## Team Members
+
+**Najmuddin Nazary - 40211776** 
+**Simon Kallassi - 40121987**
+**Youssef Marzouk - 40263812**
+**Paoleno Nikyema - 40127111**
+**Edward Villamaria - 40172621**
+**Bushr Eiddo - 40099316**
 
 This README provides a comprehensive overview, including a detailed description, installation steps, and usage instructions. For any issues or contributions, please reach out to the project team.
