@@ -14,7 +14,7 @@ const Login = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/login', new URLSearchParams({
+            const response = await axios.post('http:localhost:8000/login', new URLSearchParams({
                 username: email,  // mapped to form_data.username in FastAPI login
                 password: password  // mapped to form_data.password in FastAPI login
             }));
