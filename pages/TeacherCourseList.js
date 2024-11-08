@@ -27,6 +27,21 @@ function CourseList({ courses }) {
                   <option>Card</option>
                   <option>List</option>
                 </select>
+                <button
+                style={{
+                  marginTop: '20px',
+                  marginLeft: '20px',
+                  border: 'none',
+                  textAlign: 'center',
+                  width: '130px',
+                  borderRadius: '8px',
+                  backgroundColor: '#61C0BF',
+                  fontSize: '16px',
+                  color: '#fff',
+                  fontWeight: 'bold',
+                  height: '30px',
+                  cursor: 'pointer'
+              }}>Create Course</button>
               </div>
           </div>
             {courses.map(course => (
