@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-//import styles from '../styles/styles.module.css';  // Ensure this is linked correctly in your project
 
 function StudentDetails({ student }) {
     const router = useRouter();

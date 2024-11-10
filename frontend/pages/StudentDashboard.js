@@ -1,24 +1,29 @@
+import { useState, useEffect } from 'react';
 import CourseList from './CourseList';
+import axios from 'axios';
 
+const App = ({ userEmail }) => {
+  const [courses, setCourses] = useState([]);
 
-// Dummy data
-const courses = [
-  { id: 1, name: 'COEN 317 F 2242', description: 'Electrical & Computer Engineering' },
-  { id: 2, name: 'COEN 320 S 2242', description: 'Electrical & Computer Engineering' },
-  { id: 3, name: 'COEN 346 Y 2234', description: 'Electrical & Computer Engineering' },
-  { id: 4, name: 'COEN 352 Y 2234', description: 'Electrical & Computer Engineering' },
-  { id: 5, name: 'SOEN 341 Y 2234', description: 'Electrical & Computer Engineering' }
-];
+  // GET request to fetch joined classes for a student
+  useEffect(() => {
+    if (!userEmail) return; // Ensure userEmail is provided before fetching
 
-const App = () => {
+    axios.get(`http://localhost:8000/student_classrooms`, {
+      params: { user_email: userEmail }
+    })
+    .then((response) => {
+      setCourses(response.data.classes);
+    })
+    .catch((error) => {
+      console.error("Error fetching joined classes:", error);
+    });
+  }, [userEmail]);
+
   return (
-    
     <div>
-      <div> 
-        <h1 id="dashboard-title">Dashboard</h1> 
-        
+      <h1 id="dashboard-title">Dashboard</h1>
       <CourseList courses={courses} />
-      </div> 
     </div>
   );
 };

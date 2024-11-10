@@ -1,21 +1,35 @@
 import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import StudentList from './StudentList';
 
-// Dummy data
-const students = [
-  { id: 1, courseId: 1, name: 'Fahad Abdul Rahman', ratings: [{ subject: 'Teamwork', score: 8 }] },
-  { id: 2, courseId: 1, name: 'Oyeyimika Adeoye', ratings: [{ subject: 'Teamwork', score: 7 }] },
-  { id: 3, courseId: 2, name: 'John Doe', ratings: [{ subject: 'Communication', score: 9 }] },
-  // More students...
-];
-
-const CourseStudentsPage = () => {
+const CourseStudentsPage = ({ userEmail }) => {
   const router = useRouter();
   const { courseId } = router.query; // Get the dynamic courseId from the URL
 
+  const [groupMembers, setGroupMembers] = useState([]);
+  const [error, setError] = useState(null);
+
+  // GET request to fetch group members
+  useEffect(() => {
+    if (!userEmail) return; // Ensure userEmail is provided before fetching
+
+    axios.get(`http://localhost:8000//classroom_members/${courseId}`, {
+        params: { user_email: userEmail },
+      })
+      .then((response) => {
+        setGroupMembers(response.data.group_members);
+      })
+      .catch((error) => {
+        setError('Error fetching group members');
+        console.error('Error fetching group members:', error);
+      });
+  }, [userEmail]);
+
   return (
     <div>
-      <StudentList students={students} courseId={courseId} />
+      {error && <p>{error}</p>}
+      <StudentList students={groupMembers} courseId={courseId} />
     </div>
   );
 };

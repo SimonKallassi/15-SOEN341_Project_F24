@@ -11,9 +11,9 @@ function StudentList({ students }) {
         <div className="container-student">
             <h1 className="h1">Students Enrolled</h1>
             <div>
-                {students.map(student => (
-                    <div key={student.id} onClick={() => setSelectedStudent(student)} className="student-item" style={{ backgroundImage: `url(${student.imagePath})` }}>
-                        <div style={{ background: 'rgba(255, 255, 255, 0.8)', padding: '10px' }}>{student.name}</div>
+                {members_list.map(member => (
+                    <div key={member.id} onClick={() => setSelectedStudent(member)} className="student-item" >
+                        <div style={{ background: 'rgba(255, 255, 255, 0.8)', padding: '10px' }}>{member.name}</div>
                     </div>
                 ))}
             </div>
