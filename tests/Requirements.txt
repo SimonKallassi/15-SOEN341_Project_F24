@@ -1,0 +1,7 @@
+Backend:
+To test test_create_tables.py
+first pip install pytest
+then must install PostgreSQL and create a database. when installing PostgreSQL the password should be same as the password in the backend/congif.py  or if you put different password just change it in config.
+
+once created database in SQL shell(psql) you can run the pytest on test_create_tables.py
+This test validates that the necessary tables are created and verify the idempotency of the table creation process.
