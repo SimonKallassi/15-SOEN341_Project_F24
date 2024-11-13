@@ -14,7 +14,7 @@ const CourseStudentsPage = ({ userEmail }) => {
   useEffect(() => {
     if (!userEmail) return; // Ensure userEmail is provided before fetching
 
-    axios.get(`http://localhost:8000//classroom_members/${courseId}`, {
+    axios.get(`http://127.0.0.1:8000/classroom_members/${courseId}`, {
         params: { user_email: userEmail },
       })
       .then((response) => {

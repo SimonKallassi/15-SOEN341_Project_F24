@@ -9,7 +9,7 @@ const App = ({ userEmail }) => {
   useEffect(() => {
     if (!userEmail) return; // Ensure userEmail is provided before fetching
 
-    axios.get(`http://localhost:8000/student_classrooms`, {
+    axios.get(`http://127.0.0.1:8000/student_classrooms`, {
       params: { user_email: userEmail }
     })
     .then((response) => {
