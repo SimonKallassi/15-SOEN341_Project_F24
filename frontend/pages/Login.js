@@ -1,40 +1,38 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import {StyleSheet, Text, TouchableOpacity} from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [usernameIsFilled, setUsernameIsFilled] = useState(true);
-    const [passwordIsFilled, setPasswordIsFilled] = useState(true);
+    const [error, setError] = useState('');
+    const router = useRouter();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // Reset the validation state before checking
-        setUsernameIsFilled(true);
-        setPasswordIsFilled(true);
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/login', new URLSearchParams({
+                username: email,  // mapped to form_data.username in FastAPI login
+                password: password  // mapped to form_data.password in FastAPI login
+            }));
 
-        // Check that inputs are not blank
-        if (!email && password) {
-            setUsernameIsFilled(false);
-            setPasswordIsFilled(true);
-            alert('Please fill the username.');
-            return;
-        } else if (email && !password) {
-            setUsernameIsFilled(true);
-            setPasswordIsFilled(false);
-            alert('Please enter your password.');
-            return;
-        } else if (!email && !password) {
-            setUsernameIsFilled(false);
-            setPasswordIsFilled(false);
-            alert('Please fill in both fields.');
-            return;
+            // Save email and role to localStorage
+            localStorage.setItem("user_email", email);  // Store the user's email locally
+            const role = response.data.role;
+
+            // Redirect based on role
+            if (role === "student") {
+                router.push('/StudentDashboard');  // Replace with your student dashboard path
+            } else if (role === "teacher") {
+                router.push('/TeacherDashboard');  // Replace with your teacher dashboard path
+            }
+        } catch (err) {
+            setError("Invalid email or password");
+            console.error("Login error:", err);
         }
-
-        // If everything is filled, proceed with the submit logic
-        alert('Submit clicked!');
     };
 
     return (
@@ -43,17 +41,14 @@ const Login = () => {
             <div className="container">
                 <form onSubmit={handleSubmit}>
                     <div className="formBox">
-                        <div className="header">
-                            Sign In
-                        </div>
+                        <div className="header">Sign In</div>
                         <div className="inputs">
                             <div className="input" id="username">
                                 <input
                                     type="text"
-                                    placeholder="Username"
+                                    placeholder="Email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className={usernameIsFilled ? "" : "missing"}
                                 />
                             </div>
                             <div className="input" id="password">
@@ -62,14 +57,14 @@ const Login = () => {
                                     placeholder="Password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className={passwordIsFilled ? "" : "missing"}
                                 />
                             </div>
                         </div>
                         <div className="buttons">
                             <button type="submit" id="submit">Login</button>
-                            <div className="link" id=""><a href="#">Forgot Password?</a></div>
-                            <div className="link" id=""><a href="#">Forgot Username?</a></div>
+                            {error && <p style={{ color: 'red' }}>{error}</p>}
+                            <div className="link"><a href="#">Forgot Password?</a></div>
+                            <div className="link"><a href="#">Forgot Username?</a></div>
                             <div>
                                 <Link href='/SignUp'>
                                     <TouchableOpacity style={styles.button}>
@@ -86,9 +81,8 @@ const Login = () => {
     );
 };
 
-
-
-const styles = StyleSheet.create({button: {
+const styles = StyleSheet.create({
+    button: {
         backgroundColor: '#61C0BF',
         paddingVertical: 15,
         borderRadius: 8,

@@ -9,21 +9,7 @@ const Header = () => {
         <header style={{ padding: '10px', backgroundColor: '#333', color: '#fff' }}>
             <nav>
                 <ul style={{ listStyle: 'none', display: 'flex', gap: '20px' }}>
-                    <li>
-                        <Link href="/" style={{ color: '#fff', textDecoration: 'none' }}>
-                            Home
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/Login" style={{ color: '#fff', textDecoration: 'none' }}>
-                            Login
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/SignUp" style={{ color: '#fff', textDecoration: 'none' }}>
-                            Sign Up
-                        </Link>
-                    </li>
+
                 </ul>
             </nav>
         </header>
