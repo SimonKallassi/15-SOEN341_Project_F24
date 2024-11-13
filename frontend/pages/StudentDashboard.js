@@ -7,18 +7,35 @@ const App = ({ userEmail }) => {
 
   // GET request to fetch joined classes for a student
   useEffect(() => {
-    if (!userEmail) return; // Ensure userEmail is provided before fetching
+    async function fetchCourses() {
+      try {
+        // Retrieve user email from localStorage
+        const userEmail = localStorage.getItem("user_email");
+        if (!userEmail) {
+          setError("User email not found. Please log in.");
+          return;
+        }
 
-    axios.get(`http://127.0.0.1:8000/student_classrooms`, {
-      params: { user_email: userEmail }
-    })
-    .then((response) => {
-      setCourses(response.data.classes);
-    })
-    .catch((error) => {
-      console.error("Error fetching joined classes:", error);
-    });
-  }, [userEmail]);
+        // Call the backend to get the student classrooms
+        const response = await axios.get('http://127.0.0.1:8000/student_classrooms', {
+          params: { user_email: userEmail },
+        });
+
+       
+        console.log("Fetched courses:", response.data.classes);
+
+        // Set courses with data received from the API
+        setCourses(response.data.classes);
+      } catch (error) {
+        // error message 
+        setError("Error fetching courses. Please try again.");
+        console.error("Error fetching courses:", error);
+      }
+    }
+
+    // Call the fetch function
+    fetchCourses();
+  }, []);
 
   return (
     <div>
