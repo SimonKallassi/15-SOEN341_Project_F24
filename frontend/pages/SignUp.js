@@ -1,28 +1,47 @@
 import React, { useState } from 'react';
 import PasswordStrengthBar from 'react-password-strength-bar';
 import dynamic from 'next/dynamic';
+import axios from 'axios';
+import { useRouter } from 'next/router';  // Import useRouter
 
 const PasswordChecklist = dynamic(() => import('react-password-checklist'), { ssr: false });
-
 
 const SignUp = () => {
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
-    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [role, setRole] = useState('student'); // Default to 'student'
-    const [passwordsMatch, setPasswordsMatch] = useState(true); // Track if passwords match
+    const [passwordsMatch, setPasswordsMatch] = useState(true);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+    const router = useRouter();  // Initialize router
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (firstname && lastname && username && email && password && confirmPassword) {
-                alert(`Sign Up Successful! Welcome, ${firstname} ${lastname}`);
-                // Handle form submission logic here (e.g., send data to the server)
 
-        } else {
-            alert("Please fill in all the fields");
+        if (password !== confirmPassword) {
+            setError("Passwords do not match");
+            return;
+        }
+
+        const userData = {
+            first_name: firstname,
+            last_name: lastname,
+            email: email,
+            password: password,
+            role: role,
+        };
+
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/signup', userData); // FastAPI endpoint
+            setSuccess(response.data.message);
+            setError('');
+            router.push('/Login');  // Redirect to login page on successful signup
+        } catch (err) {
+            setError(err.response ? err.response.data.detail : "An error occurred");
+            setSuccess('');
         }
     };
 
@@ -45,14 +64,6 @@ const SignUp = () => {
                         placeholder="Last name"
                         value={lastname}
                         onChange={(e) => setLastname(e.target.value)}
-                        required
-                    />
-                    <input
-                        style={styles.input}
-                        type="text"
-                        placeholder="Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
                         required
                     />
                     <input
@@ -84,7 +95,6 @@ const SignUp = () => {
                         }}
                         required
                     />
-
                     {/* Password checklist */}
                     <PasswordChecklist
                         rules={["minLength", "number", "capital", "match"]}
@@ -109,6 +119,8 @@ const SignUp = () => {
                         <span style={styles.buttonText}>Sign Up</span>
                     </button>
                 </form>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
+                {success && <p style={{ color: 'green' }}>{success}</p>}
             </div>
         </div>
     );
@@ -150,10 +162,6 @@ const styles = {
         fontSize: 16,
         color: '#333',
         boxSizing: 'border-box',
-    },
-    error: {
-        color: 'red',
-        fontWeight: 'bold',
     },
     pickerContainer: {
         marginVertical: 15,
