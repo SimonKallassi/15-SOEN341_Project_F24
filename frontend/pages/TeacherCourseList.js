@@ -53,6 +53,7 @@ function CourseList({ courses, setCourses }) {
                     <Link href={`/${course.id}`}>
                         <span>
                             <h2 style={styles.courseName}>{course.name}</h2>
+                            <p style={styles.courseId}>ID: {course.id}</p>
                             <p style={styles.courseDescription}>{course.description}</p>
                         </span>
                     </Link>
