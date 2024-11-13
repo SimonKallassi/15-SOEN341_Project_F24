@@ -14,10 +14,15 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/index.js"
     ],
-    "/Dashboard": [
+    "/Login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/Dashboard.js"
+      "static/chunks/pages/Login.js"
+    ],
+    "/StudentDashboard": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/StudentDashboard.js"
     ],
     "/[courseId]": [
       "static/chunks/webpack.js",

@@ -35,7 +35,7 @@ const SignUp = () => {
         };
 
         try {
-            const response = await axios.post('http:localhost:8000/signup', userData); // FastAPI endpoint
+            const response = await axios.post('http://127.0.0.1:8000/signup', userData); // FastAPI endpoint
             setSuccess(response.data.message);
             setError('');
             router.push('/Login');  // Redirect to login page on successful signup
