@@ -1,6 +1,7 @@
-
-
 # test_database.py
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning, module="sqlalchemy")
+
 
 import pytest
 from sqlalchemy import text  # Import text for raw SQL queries
