@@ -102,4 +102,12 @@ def test_get_classrooms(create_user):
     assert len(classrooms) > 0
     # Check that the created classroom is in the returned list
     assert any(c["classroom_name"] == classroom_name for c in classrooms)
+
+def test_join_class(create_student, classroom_id):
+    response = client.post("/join_class", json={
+        "class_code": classroom_id,
+        "user_email": create_student.email
+    })
+    assert response.status_code == 200
+    assert response.json()["message"] == "Successfully joined the class"
    
