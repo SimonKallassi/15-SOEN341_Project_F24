@@ -54,3 +54,14 @@ def classroom_id(create_user):
     })
     assert response.status_code == 200, "Failed to create a classroom in fixture"
     return response.json().get("classroom_id")
+
+def test_signup():
+    response = client.post("/signup", json={
+        "first_name": "New",
+        "last_name": "User",
+        "email": f"newuser_{uuid4().hex}@example.com",
+        "password": "password123",
+        "role": "teacher"
+    })
+    assert response.status_code == 200
+    assert response.json()["message"] == "User created successfully"
