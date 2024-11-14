@@ -10,3 +10,8 @@ from uuid import uuid4
 client = TestClient(app)
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+@pytest.fixture
+def test_db():
+    db = SessionLocal()
+    yield db
+    db.close()
