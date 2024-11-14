@@ -69,3 +69,24 @@ def test_add_student_to_classroom(db_session, create_unique_user, unique_classro
     assert member.user_id == student.id
     assert member.classroom_id == classroom.classroom_id
     assert member.role == "student"
+
+
+    
+def test_unique_classroom_name_constraint(db_session, create_unique_user):
+    """Test that a unique constraint on classroom_name is enforced."""
+    classroom1 = Classroom(
+        classroom_id="unique_class1",
+        classroom_name="Math 101",
+        teacher_id=create_unique_user.id
+    )
+    db_session.add(classroom1)
+    db_session.commit()
+    
+    classroom2 = Classroom(
+        classroom_id="unique_class2",
+        classroom_name="Math 101",  # Duplicate name should trigger an IntegrityError
+        teacher_id=create_unique_user.id
+    )
+    db_session.add(classroom2)
+    with pytest.raises(IntegrityError):
+        db_session.commit()  # This should raise an IntegrityError
