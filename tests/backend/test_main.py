@@ -73,3 +73,12 @@ def test_login(create_user):
     })
     assert response.status_code == 200
     assert response.json()["message"] == "Login successful"
+
+def test_create_classroom(create_user):
+    classroom_name = f"Class_{uuid4().hex[:8]}"
+    response = client.post("/create_classroom", json={
+        "classroom_name": classroom_name,
+        "user_email": create_user.email
+    })
+    assert response.status_code == 200
+    assert response.json()["message"] == "Classroom created successfully"
