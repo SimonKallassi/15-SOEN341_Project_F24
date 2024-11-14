@@ -26,8 +26,8 @@ const CourseStudentsPage = () => {
           params: { user_email: userEmail },
         });
 
-        console.log("Fetched group members:", response.data.group_members); // Log data for debugging
-        setGroupMembers(response.data.group_members); // Assuming response has `group_members` key
+        console.log("Fetched group members:", response.data.members); // Log data for debugging
+        setGroupMembers(response.data.members || []); // Set groupMembers to the members array from the response
       } catch (error) {
         setError("Error fetching group members. Please try again.");
         console.error("Error fetching group members:", error);
@@ -35,7 +35,7 @@ const CourseStudentsPage = () => {
     }
 
     fetchGroupMembers();
-  }, [courseId]); // Run when courseId changes
+  }, [courseId]);
 
   return (
     <div>
