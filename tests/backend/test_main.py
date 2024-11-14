@@ -29,3 +29,17 @@ def create_user(test_db):
     test_db.commit()
     test_db.refresh(user_data)
     return user_data
+
+@pytest.fixture
+def create_student(test_db):
+    student_data = User(
+        first_name="Student",
+        last_name="Example",
+        email=f"student_{uuid4().hex}@example.com",
+        hashed_password=pwd_context.hash("studentpassword"),
+        role="student"
+    )
+    test_db.add(student_data)
+    test_db.commit()
+    test_db.refresh(student_data)
+    return student_data
