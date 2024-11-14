@@ -9,7 +9,8 @@ on:
       - test  # Runs on PRs to the 'test' branch
 
 jobs:
-  build:
+  frontend:
+    name: Frontend Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'  # Upgrade to Node.js v18 to match package requirements
 
       - name: Install dependencies
         run: npm install
@@ -27,7 +28,30 @@ jobs:
       - name: Fix Jest permissions
         run: chmod +x ./node_modules/.bin/jest
 
-      - name: Run tests
+      - name: Run frontend tests
         env:
           NODE_OPTIONS: '--max-old-space-size=4096'
         run: npx jest --runInBand
+
+  backend:
+    name: Backend Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Or specify your required Python version
+
+      - name: Install Python dependencies
+        run: pip install -r backend/requirements.txt
+
+      - name: Run Python tests individually
+        run: |
+          for test_file in $(ls backend/tests/*.py); do
+            echo "Running test: $test_file"
+            pytest $test_file || exit 1
+          done
