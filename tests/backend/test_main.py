@@ -110,4 +110,21 @@ def test_join_class(create_student, classroom_id):
     })
     assert response.status_code == 200
     assert response.json()["message"] == "Successfully joined the class"
+
+def test_join_class_already_member(create_student, classroom_id):
+    # Have the student join the class once
+    first_join_response = client.post("/join_class", json={
+        "class_code": classroom_id,
+        "user_email": create_student.email
+    })
+    assert first_join_response.status_code == 200
+    assert first_join_response.json()["message"] == "Successfully joined the class"
+
+    # Attempt to join the same classroom again
+    second_join_response = client.post("/join_class", json={
+        "class_code": classroom_id,
+        "user_email": create_student.email
+    })
+    assert second_join_response.status_code == 400
+    assert "User is already a member of this class" in second_join_response.json()["detail"]
    
