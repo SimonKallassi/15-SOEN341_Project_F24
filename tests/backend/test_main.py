@@ -82,3 +82,24 @@ def test_create_classroom(create_user):
     })
     assert response.status_code == 200
     assert response.json()["message"] == "Classroom created successfully"
+
+def test_get_classrooms(create_user):
+    # Create a classroom for the teacher
+    classroom_name = f"Class_{uuid4().hex[:8]}"
+    create_response = client.post("/create_classroom", json={
+        "classroom_name": classroom_name,
+        "user_email": create_user.email
+    })
+    assert create_response.status_code == 200
+    assert create_response.json()["message"] == "Classroom created successfully"
+
+    # Now retrieve the classrooms
+    response = client.get("/classrooms", params={"user_email": create_user.email})
+    assert response.status_code == 200
+    classrooms = response.json()
+
+    # Ensure the teacher has at least one classroom
+    assert len(classrooms) > 0
+    # Check that the created classroom is in the returned list
+    assert any(c["classroom_name"] == classroom_name for c in classrooms)
+   
