@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
-import SignUp from '../pages/SignUp';
+import SignUp from '../../pages/SignUp';
 import '@testing-library/jest-dom';
 
 beforeAll(() => {
