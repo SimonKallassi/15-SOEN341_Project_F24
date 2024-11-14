@@ -135,3 +135,9 @@ def test_get_classroom_members(classroom_id):
     data = response.json()
     assert "members" in data
     # Should have at least 1 member (the teacher)
+
+def test_delete_classroom(classroom_id):
+    response = client.delete(f"/delete_classroom/{classroom_id}")
+    assert response.status_code == 200
+    assert response.json()["message"] == "Classroom deleted successfully"
+
