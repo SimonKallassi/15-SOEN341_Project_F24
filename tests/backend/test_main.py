@@ -15,3 +15,17 @@ def test_db():
     db = SessionLocal()
     yield db
     db.close()
+
+@pytest.fixture
+def create_user(test_db):
+    user_data = User(
+        first_name="Test",
+        last_name="User",
+        email=f"testuser_{uuid4().hex}@example.com",
+        hashed_password=pwd_context.hash("testpassword"),
+        role="teacher"
+    )
+    test_db.add(user_data)
+    test_db.commit()
+    test_db.refresh(user_data)
+    return user_data
