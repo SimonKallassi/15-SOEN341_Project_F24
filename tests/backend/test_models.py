@@ -31,3 +31,41 @@ def test_create_classroom_with_teacher(db_session, create_unique_user):
     db_session.refresh(classroom)
     assert classroom.classroom_id == "class123"
     assert classroom.teacher_id == create_unique_user.id
+
+def test_add_student_to_classroom(db_session, create_unique_user, unique_classroom_name):
+    """Test adding a student to a Classroom."""
+    # Create a classroom with a unique name
+    classroom = Classroom(
+        classroom_id="class456",
+        classroom_name=unique_classroom_name,
+        teacher_id=create_unique_user.id
+    )
+    db_session.add(classroom)
+    db_session.commit()
+
+    # Add a student to the classroom
+    student = User(
+        first_name="Jane",
+        last_name="Smith",
+        email="jane.smith@example.com",
+        hashed_password="hashed_password",
+        role="student"
+    )
+    db_session.add(student)
+    db_session.commit()
+    db_session.refresh(student)
+
+    # Create a ClassroomMember link between the student and the classroom
+    member = ClassroomMember(
+        classroom_id=classroom.classroom_id,
+        user_id=student.id,
+        role="student"
+    )
+    db_session.add(member)
+    db_session.commit()
+    db_session.refresh(member)
+    
+    # Check relationships
+    assert member.user_id == student.id
+    assert member.classroom_id == classroom.classroom_id
+    assert member.role == "student"
