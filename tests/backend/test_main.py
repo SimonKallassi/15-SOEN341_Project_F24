@@ -128,3 +128,10 @@ def test_join_class_already_member(create_student, classroom_id):
     assert second_join_response.status_code == 400
     assert "User is already a member of this class" in second_join_response.json()["detail"]
    
+def test_get_classroom_members(classroom_id):
+    response = client.get(f"/classroom_members/{classroom_id}")
+    assert response.status_code == 200
+    # Ensure members are listed
+    data = response.json()
+    assert "members" in data
+    # Should have at least 1 member (the teacher)
