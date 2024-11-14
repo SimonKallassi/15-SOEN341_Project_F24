@@ -19,3 +19,15 @@ def test_create_user(db_session):
     assert user.id is not None
     assert user.email == "john.doe@example.com"
 
+def test_create_classroom_with_teacher(db_session, create_unique_user):
+    """Test that a Classroom can be created and associated with a teacher."""
+    classroom = Classroom(
+        classroom_id="class123",
+        classroom_name="Science 101",
+        teacher_id=create_unique_user.id  # Associate with a teacher
+    )
+    db_session.add(classroom)
+    db_session.commit()
+    db_session.refresh(classroom)
+    assert classroom.classroom_id == "class123"
+    assert classroom.teacher_id == create_unique_user.id
