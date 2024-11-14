@@ -141,3 +141,9 @@ def test_delete_classroom(classroom_id):
     assert response.status_code == 200
     assert response.json()["message"] == "Classroom deleted successfully"
 
+def test_student_classrooms(create_student):
+    response = client.get("/student_classrooms", params={"user_email": create_student.email})
+    assert response.status_code == 200
+    # It's possible that a student hasn't joined any classroom yet, so we just check response format
+    data = response.json()
+    assert "classes" in data
