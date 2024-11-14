@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import { useRouter } from 'next/router';
 
 function StudentDetails({ student }) {
     const router = useRouter();
-    // Initialize ratings with default values if student.ratings doesn't exist
+    
+    // Initialize ratings 
     const [ratings, setRatings] = useState([
         { category: 'Teamwork', score: student.ratings?.Teamwork || '' },
         { category: 'Communication', score: student.ratings?.Communication || '' },
@@ -13,7 +14,12 @@ function StudentDetails({ student }) {
         { category: 'Dependability', score: student.ratings?.Dependability || '' }
     ]);
 
-    const [maxScore, setMaxScore] = useState(5);  // Maximum score for the ratings
+    const [comments, setComments] = useState({
+        Ethics: student.comments?.Ethics || '',
+        Communication: student.comments?.Communication || ''
+    });
+
+    const [maxScore] = useState(5);  // Maximum score 
 
     // Function to handle changes in ratings
     const handleRatingChange = (index, newScore) => {
@@ -26,24 +32,33 @@ function StudentDetails({ student }) {
         setRatings(updatedRatings);
     };
 
-    // Function to save the ratings
-    const handleSave = () => {
+    // Function to handle changes in comments
+    const handleCommentChange = (category, newComment) => {
+        setComments(prevComments => ({
+            ...prevComments,
+            [category]: newComment
+        }));
+    };
 
+    // Function to save the ratings and comments
+    const handleSave = () => {
+        // Check if all rating fields are filled
         const incompleteRatings = ratings.some(rating => rating.score === '' || rating.score === null);
 
-    if (incompleteRatings) {
-        alert("Please fill in all rating boxes before submitting.");
-        return; // Stop the function here if any rating is empty
-    }
-    
+        if (incompleteRatings) {
+            alert("Please fill in all rating boxes before submitting.");
+            return; // Stop the function here if any rating is empty
+        }
+
         const userConfirmed = window.confirm("Are you sure you want to submit?");
         if (userConfirmed) {
-          
+            console.log('Saving ratings:', ratings);
+            console.log('Saving comments:', comments);
+            
+            // Add logic to save ratings and comments, e.g., API call
+
             router.back();
         }
-        // console.log('Saving ratings:', ratings);
-        // Implement save functionality here
-        // This could be an API call or local state update depending on your application setup
     };
 
     return (
@@ -64,6 +79,31 @@ function StudentDetails({ student }) {
                     </label>
                 </div>
             ))}
+
+            <div className="comments">
+                <h3>Comments</h3>
+                <div className="comment-box">
+                    <label>
+                        Ethics:
+                        <textarea
+                            value={comments.Ethics}
+                            onChange={(e) => handleCommentChange('Ethics', e.target.value)}
+                            className="input-field"
+                        />
+                    </label>
+                </div>
+                <div className="comment-box">
+                    <label>
+                        Communication:
+                        <textarea
+                            value={comments.Communication}
+                            onChange={(e) => handleCommentChange('Communication', e.target.value)}
+                            className="input-field"
+                        />
+                    </label>
+                </div>
+            </div>
+
             <button onClick={handleSave} className="save-button">Save</button>
         </div>
     );
