@@ -65,3 +65,11 @@ def test_signup():
     })
     assert response.status_code == 200
     assert response.json()["message"] == "User created successfully"
+
+def test_login(create_user):
+    response = client.post("/login", data={
+        "username": create_user.email,
+        "password": "testpassword"
+    })
+    assert response.status_code == 200
+    assert response.json()["message"] == "Login successful"
