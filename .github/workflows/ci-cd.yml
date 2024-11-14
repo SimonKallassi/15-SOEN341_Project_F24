@@ -15,12 +15,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Updated to v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3  # Updated to v3
         with:
-          node-version: '18'  # Upgrade to Node.js v18 to match package requirements
+          node-version: '18'  # Use Node.js 18 as required
 
       - name: Install dependencies
         run: npm install
@@ -39,12 +39,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Updated to v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4  # Updated to v4
         with:
-          python-version: '3.8'  # Or specify your required Python version
+          python-version: '3.8'
 
       - name: Install Python dependencies
         run: pip install -r backend/requirements.txt
@@ -55,3 +55,4 @@ jobs:
             echo "Running test: $test_file"
             pytest $test_file || exit 1
           done
+
