@@ -1,19 +1,26 @@
-# test_database.py
-import warnings
-warnings.filterwarnings("ignore", category=DeprecationWarning, module="sqlalchemy")
-
-
+from app.database import get_db, Base
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 import pytest
-from sqlalchemy import text  # Import text for raw SQL queries
-from app.database import get_db, SessionLocal
 from sqlalchemy.exc import OperationalError
+from sqlalchemy.sql import text
+
+# Setup an in-memory SQLite database for testing
+TEST_DATABASE_URL = "sqlite:///:memory:"
+
+# Initialize the test database engine and session factory
+engine = create_engine(TEST_DATABASE_URL)
+TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 @pytest.fixture(scope="module")
 def db_session():
-    # Initialize a session to test get_db
-    db = SessionLocal()
+    # Create all tables for an isolated in-memory database
+    Base.metadata.create_all(bind=engine)
+    db = TestingSessionLocal()
     yield db
     db.close()
+    # Drop all tables after tests complete
+    Base.metadata.drop_all(bind=engine)
 
 def test_database_connection(db_session):
     # Check that we can execute a simple query on the session to ensure it's active
