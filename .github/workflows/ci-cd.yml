@@ -28,4 +28,6 @@ jobs:
         run: chmod +x ./node_modules/.bin/jest
 
       - name: Run tests
-        run: npx jest
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
+        run: npx jest --runInBand
