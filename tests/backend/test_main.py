@@ -43,3 +43,14 @@ def create_student(test_db):
     test_db.commit()
     test_db.refresh(student_data)
     return student_data
+
+@pytest.fixture
+def classroom_id(create_user):
+    # Fixture to create a classroom and provide its ID
+    classroom_name = f"Class_{uuid4().hex[:8]}"
+    response = client.post("/create_classroom", json={
+        "classroom_name": classroom_name,
+        "user_email": create_user.email
+    })
+    assert response.status_code == 200, "Failed to create a classroom in fixture"
+    return response.json().get("classroom_id")
