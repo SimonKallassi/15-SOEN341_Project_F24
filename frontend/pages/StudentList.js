@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StudentDetails from './StudentDetails';
 
-function StudentList({ students }) {
+function StudentList({ students = [] }) { // Default to an empty array if students is undefined
     const [selectedStudent, setSelectedStudent] = useState(null);
 
     return (
