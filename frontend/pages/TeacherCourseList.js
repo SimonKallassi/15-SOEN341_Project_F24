@@ -50,10 +50,10 @@ function CourseList({ courses, setCourses }) {
             <button onClick={handleCreateCourseClick} style={styles.createButton}>Create Course</button>
             {courses.map((course) => (
                 <div key={course.id} id="course" style={styles.courseCard}>
-                    <Link href={`/${course.id}`}>
+                    <Link href={`/${course.classroom_id}`}>
                         <span>
-                            <h2 style={styles.courseName}>{course.name}</h2>
-                            <p style={styles.courseId}>ID: {course.id}</p>
+                            <h2 style={styles.courseName}>{course.classroom_name}</h2>
+                            <p style={styles.courseId}>ID: {course.classroom_id}</p>
                             <p style={styles.courseDescription}>{course.description}</p>
                         </span>
                     </Link>
