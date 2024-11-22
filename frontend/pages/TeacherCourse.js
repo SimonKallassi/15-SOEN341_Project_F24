@@ -5,7 +5,13 @@ function StudentList({ students }) {
     const [isPopupOpen, setPopupOpen] = useState(false);
     const [selectedStudents, setSelectedStudents] = useState(new Set());
     const [teams, setTeams] = useState([]);
+    const handleSummary = (studentId) => {
+        console.log('Summary for student ID ${studentId}');
+    };
 
+    const handleDetailedView = (studentId) => {
+        console.log('Detailed view for student ID: ${studentId}');
+    };
     const togglePopup = () => {
         setPopupOpen(!isPopupOpen);
     };
@@ -48,7 +54,19 @@ function StudentList({ students }) {
                         key={student.id}
                         className="student-item"
                         style={styles.studentItem}>
-                        {student.name}
+                        <span style={styles.studentName}>{student.name}</span>
+                        <div style={styles.buttonContainer}>
+                            <button
+                                onClick={() => handleSummary(student.id)}
+                                style={{ ...styles.button, ...styles.summaryButton }}>
+                                Summary
+                            </button>
+                            <button
+                                onClick={() => handleDetailedView(student.id)}
+                                style={{ ...styles.button, ...styles.detailedButton }}>
+                                Detailed View
+                            </button>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -114,11 +132,37 @@ const styles = {
         marginBottom: '10px',
     },
     studentItem: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         backgroundColor: '#fff',
         padding: '10px',
         borderRadius: '5px',
         margin: '5px 0',
         boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+    },
+    studentName: {
+        fontWeight: '500',
+        fontSize: '16px',
+    },
+    buttonContainer: {
+        display: 'flex',
+        gap: '10px',
+    },
+    button: {
+        padding: '6px 12px',
+        border: 'none',
+        borderRadius: '5px',
+        fontSize: '14px',
+        cursor: 'pointer',
+    },
+    summaryButton: {
+        backgroundColor: '#FFA726',
+        color: '#fff',
+    },
+    detailedButton: {
+        backgroundColor: '#42A5F5',
+        color: '#fff',
     },
     popupOverlay: {
         position: 'fixed',
@@ -170,5 +214,6 @@ const styles = {
         cursor: 'pointer',
     },
 };
+
 
 export default StudentList;
