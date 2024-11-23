@@ -1,29 +1,41 @@
-.split{
+.split {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     height: 100vh;
     background-color: #EAF6F6;
     padding: 20px;
     background-image: url('https://i.redd.it/downward-sloping-auditorium-or-lecture-hall-v0-37uhzc54njcc1.jpg?width=1160&format=pjpg&auto=webp&s=b506266f14a60da712be01a4e09dcee7978589d6');
-
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.title{
-    text-align: middle;
+
+.title {
+    text-align: center;
     font-size: 72px;
-    font-weight: 'bold';
+    font-weight: bold;
     color: #3c87bd;
     margin: 0;
     margin-top: 20px;
 }
-#name{
-    padding-left: 60px;
+
+#name {
+    padding-left: 0;
     font-size: 72px;
 }
-.slogan{
-    margin: 0;
-    margin-top: 10px;
+
+.slogan {
+    margin: 10px 0 0 0;
     color: rgb(255, 255, 255);
-    padding-left: 100px;
+    text-align: center;
 }
+
+.buttons {
+    margin-top: 30px;
+}
+
 #start{
     border-radius: 1.5rem;
     border-color: #61C0BF;
@@ -63,7 +75,4 @@
 #login{
     margin-left: 27%;
     padding-top: 5px;
-}
-.home-image{
-    align-items: cover;
 }
