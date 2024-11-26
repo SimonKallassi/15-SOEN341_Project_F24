@@ -87,7 +87,7 @@ const styles = {
         marginBottom: '10px',
     },
     createButton: {
-        marginTop: '20px',
+        position: 'fixed',
         marginBottom: '20px',
         border: 'none',
         width: '130px',
