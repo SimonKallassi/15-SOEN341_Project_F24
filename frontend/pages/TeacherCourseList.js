@@ -147,6 +147,7 @@ const styles = {
         marginBottom: '10px',
     },
     cancelButton: {
+        marginLeft: '10px',
         backgroundColor: '#ccc',
         border: 'none',
         padding: '8px 12px',
