@@ -1,1 +1,20 @@
+Meeting #15 - 2024/11/21 Started at 18h30 ended at 20h00
 
+Collaborators present:
+Najmuddin Nazary - 40211776
+Paoleno Nikyema - 40127111
+Youssef Marzouk - 40263812
+Edward Villamaria - 40172621
+Bushr Eiddo - 40099316
+
+Collaborators absent:
+Simon Kallassi - 40121987
+
+Notes:
+Discussed issues the TA brought up during last demo
+  Invalid test cases
+  Backend issues
+  Pull requests
+Discussed solutions to backend issues
+Fixed backend issues
+  Mainly routing issues to the correct table name
