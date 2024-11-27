@@ -48,7 +48,8 @@ function CourseList({ courses, setCourses }) {
         <div style={styles.container}>
             <h2 style={styles.title}>Course Overview</h2>
             <button onClick={handleCreateCourseClick} style={styles.createButton}>Create Course</button>
-            {courses.map((course) => (
+            <div>
+                {courses.map((course) => (
                 <div key={course.id} id="course" style={styles.courseCard}>
                     <Link href={`/${course.classroom_id}`}>
                         <span>
@@ -59,7 +60,7 @@ function CourseList({ courses, setCourses }) {
                     </Link>
                     <button onClick={() => handleDeleteCourse(course.id)} style={styles.deleteButton}>Delete</button>
                 </div>
-            ))}
+            ))}</div>
             {showModal && (
                 <div style={styles.modal}>
                     <h3 style={styles.modalTitle}>Create New Course</h3>
@@ -87,8 +88,7 @@ const styles = {
         marginBottom: '10px',
     },
     createButton: {
-        marginTop: '20px',
-        marginBottom: '20px',
+        marginBottom: '10px',
         border: 'none',
         width: '130px',
         borderRadius: '8px',
@@ -103,6 +103,7 @@ const styles = {
         border: '1px solid #ddd',
         padding: '15px',
         borderRadius: '8px',
+        marginTop: '10px',
         marginBottom: '10px',
         backgroundColor: '#fff',
     },
@@ -146,6 +147,7 @@ const styles = {
         marginBottom: '10px',
     },
     cancelButton: {
+        marginLeft: '10px',
         backgroundColor: '#ccc',
         border: 'none',
         padding: '8px 12px',

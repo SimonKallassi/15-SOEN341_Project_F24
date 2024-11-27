@@ -1,0 +1,34 @@
+#course{
+    border:solid;
+    display:inline-block;
+    margin-right: 30px;
+    height: 150px;
+    text-align:center;
+    width:200px;
+    border-width: 1px;
+     border-radius: 0.5rem;
+    overflow: hidden;
+    margin-top: 50px;
+    padding-top: 20px;
+}
+#out{
+    
+    border:solid;
+    border-width: 1px;
+    width:1000px;
+    text-align: center;
+    margin-left: auto;
+    background-color: white;
+  margin-right: auto;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+#course-filtering{
+  margin-top: 20px;
+  margin-left: 70px;
+  text-align:left;
+}
+#dashboard-title{
+  margin-top:50px;
+  margin-left: 130px;
+}

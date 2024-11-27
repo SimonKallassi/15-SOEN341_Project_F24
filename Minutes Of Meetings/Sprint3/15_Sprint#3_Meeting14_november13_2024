@@ -15,3 +15,4 @@ Notes:
 Fixed the merge with student dashboard and instructor dashboard frontend with backend.
 Separate tasks where one part should do documentation and the other help with the code
 Fixed some bug with the UI of the Instructor Dashboard
+Need to do units test for other requirements.

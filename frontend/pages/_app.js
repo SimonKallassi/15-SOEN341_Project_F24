@@ -3,36 +3,14 @@ import '../styles/globals.css'; // Import global CSS
 import Link from 'next/link';
 import '../styles/Home.css';
 import '../styles/Login.css';
-import '../styles/Dashboard.css';
-import '../styles/styles.css';
-
-
-import '../styles/Dashboard.css';
-import '../styles/styles.css';
-
-
+import '../styles/teacherDashboard.css';
+import '../styles/teachercourse.css';
 
 const Header = () => {
     return (
-        
-        <header style={{ padding: '10px', backgroundColor: '#333', color: '#fff', fontWeight:'bold'}}>
-        
-        <header style={{ padding: '10px', backgroundColor: '#333', color: '#fff', fontWeight:'bold'}}>
+        <header style={{ padding: '10px', backgroundColor: '#333', color: '#fff' }}>
             <nav>
-                
-                <ul style={{ listStyle: 'none', display: 'flex', gap: '20px' ,alignItems: 'center',}}>
-                    <li>
-                        <Link href="/" style={{ color: '#fff', textDecoration: 'none', fontSize:'40px',marginRight:'20px' }}>
-                            img
-                        </Link>
-                    </li>
-                
-                <ul style={{ listStyle: 'none', display: 'flex', gap: '20px' ,alignItems: 'center',}}>
-                    <li>
-                        <Link href="/" style={{ color: '#fff', textDecoration: 'none', fontSize:'40px',marginRight:'20px' }}>
-                            img
-                        </Link>
-                    </li>
+                <ul style={{ listStyle: 'none', display: 'flex', gap: '20px' }}>
                     <li>
                         <Link href="/" style={{ color: '#fff', textDecoration: 'none' }}>
                             Home
@@ -54,8 +32,8 @@ const Header = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/Dashboard" style={{ color: '#fff', textDecoration: 'none' }}>
-                            Dashboard
+                        <Link href="/TeacherDash" style={{ color: '#fff', textDecoration: 'none' }}>
+                            Teacher Dashboard
                         </Link>
                     </li>
                 </ul>
