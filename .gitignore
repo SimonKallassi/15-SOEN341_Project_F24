@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 .venv/
 node_modules/
 .next/
+=======
+./node_modules
+.next
+>>>>>>> origin/student-dashboard
