@@ -27,7 +27,7 @@ const Login = () => {
             if (role === "student") {
                 router.push('/StudentDashboard');  // Replace with your student dashboard path
             } else if (role === "teacher") {
-                router.push('/TeacherDashboard');  // Replace with your teacher dashboard path
+                router.push('/TeacherDash');  // Replace with your teacher dashboard path
             }
         } catch (err) {
             setError("Invalid email or password");

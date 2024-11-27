@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-// Importing StudentDetails into the parent component
 import StudentDetails from './StudentDetails';
 
-//import './styles/styles.css'; // Make sure the path is correct
-
-function StudentList({ students }) {
+function StudentList({ students = [] }) { // Default to an empty array if students is undefined
     const [selectedStudent, setSelectedStudent] = useState(null);
 
     return (
@@ -12,7 +9,7 @@ function StudentList({ students }) {
             <h1 className="h1">Students Enrolled</h1>
             <div>
                 {students.map(student => (
-                    <div key={student.id} onClick={() => setSelectedStudent(student)} className="student-item" style={{ backgroundImage: `url(${student.imagePath})` }}>
+                    <div key={student.id} onClick={() => setSelectedStudent(student)} className="student-item">
                         <div style={{ background: 'rgba(255, 255, 255, 0.8)', padding: '10px' }}>{student.name}</div>
                     </div>
                 ))}
