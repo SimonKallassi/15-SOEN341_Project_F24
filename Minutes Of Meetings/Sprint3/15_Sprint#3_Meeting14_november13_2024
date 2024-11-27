@@ -1,0 +1,18 @@
+Meeting #14 - 2024/11/13 Started at 18h00 ended at 
+
+Collaborators present:
+Najmuddin Nazary - 40211776
+Simon Kallassi - 40121987
+Paoleno Nikyema - 40127111
+Youssef Marzouk - 40263812
+Edward Villamaria - 40172621
+Bushr Eiddo - 40099316
+
+Collaborators absent:
+N/A
+
+Notes: 
+Fixed the merge with student dashboard and instructor dashboard frontend with backend.
+Separate tasks where one part should do documentation and the other help with the code
+Fixed some bug with the UI of the Instructor Dashboard
+Need to do units test for other requirements.
