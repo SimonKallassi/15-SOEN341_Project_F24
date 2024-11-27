@@ -21,8 +21,9 @@ const Login = () => {
 
             // Save email and role to localStorage
             localStorage.setItem("user_email", email);  // Store the user's email locally
+            
             const role = response.data.role;
-
+            localStorage.setItem("user_role", role); // Save role
             // Redirect based on role
             if (role === "student") {
                 router.push('/StudentDashboard');  // Replace with your student dashboard path
@@ -97,3 +98,4 @@ const styles = StyleSheet.create({
 });
 
 export default Login;
+

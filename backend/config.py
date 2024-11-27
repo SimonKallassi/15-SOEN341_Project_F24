@@ -1,1 +1,1 @@
-DATABASE_URL = "postgresql://postgres:12345678@localhost:5432/peer_evaluator_database"
+DATABASE_URL = "postgresql://postgres:NikywendPlap15#@localhost:5432/peer_evaluator_database"
