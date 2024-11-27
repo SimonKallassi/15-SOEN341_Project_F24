@@ -3,19 +3,13 @@ import Link from 'next/link';
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import axios from 'axios';
-import { useRouter } from 'next/router';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const router = useRouter();
-    const [error, setError] = useState('');
-    const router = useRouter();
 
-    const handleSubmit = async (event) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -49,12 +43,10 @@ const Login = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="formBox">
                         <div className="header">Sign In</div>
-                        <div className="header">Sign In</div>
                         <div className="inputs">
                             <div className="input" id="username">
                                 <input
                                     type="text"
-                                    placeholder="Email"
                                     placeholder="Email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -71,9 +63,6 @@ const Login = () => {
                         </div>
                         <div className="buttons">
                             <button type="submit" id="submit">Login</button>
-                            {error && <p style={{ color: 'red' }}>{error}</p>}
-                            <div className="link"><a href="#">Forgot Password?</a></div>
-                            <div className="link"><a href="#">Forgot Username?</a></div>
                             {error && <p style={{ color: 'red' }}>{error}</p>}
                             <div className="link"><a href="#">Forgot Password?</a></div>
                             <div className="link"><a href="#">Forgot Username?</a></div>
@@ -95,8 +84,6 @@ const Login = () => {
 
 const styles = StyleSheet.create({
     button: {
-const styles = StyleSheet.create({
-    button: {
         backgroundColor: '#61C0BF',
         paddingVertical: 15,
         borderRadius: 8,
@@ -111,5 +98,4 @@ const styles = StyleSheet.create({
 });
 
 export default Login;
-
 
