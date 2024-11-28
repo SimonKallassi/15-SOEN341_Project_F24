@@ -87,6 +87,36 @@ To set up the Peer Evaluation Website on your local machine, follow these steps:
 
 ---
 
+# Navigate to the backend folder
+```bash
+cd ../backend
+```
+# Set up a virtual environment
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+# Install backend dependencies
+```bash
+pip install -r requirements.txt
+```
+
+# Set up the database
+ Ensure you have a running PostgreSQL instance and create a database.
+ Update the .env file with your database credentials:
+ DATABASE_URL=postgresql://<username>:<password>@localhost/<database_name>
+
+# Apply database migrations
+```bash
+python create_tables.py
+```
+
+# Start the backend server
+```bash
+uvicorn main:app --reload
+```
+
 ## Usage
 
 1. **Log In / Sign Up**  
