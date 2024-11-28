@@ -31,7 +31,7 @@ function CourseList({ courses, setCourses }) {
             setShowModal(false);
             setNewCourseName('');
         } catch (error) {
-            console.error("Error creating course", error);
+            console.error("Error creating course1212", error);
         }
     };
 
@@ -40,7 +40,7 @@ function CourseList({ courses, setCourses }) {
             await axios.delete(`http://127.0.0.1:8000/delete_classroom/${courseId}`);
             setCourses(courses.filter(course => course.id !== courseId));
         } catch (error) {
-            console.error("Error deleting course", error);
+            console.error("Error deleting course1212", error);
         }
     };
 

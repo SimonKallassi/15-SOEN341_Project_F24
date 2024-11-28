@@ -1,12 +1,13 @@
-from fastapi import FastAPI, HTTPException, Depends, Body
+from fastapi import FastAPI, HTTPException, Depends, Body, APIRouter
 from sqlalchemy.orm import Session
 from pydantic import BaseModel, EmailStr
-from .database import get_db
-from .models import User, Classroom , ClassroomMember
+from database import get_db
+from models import User, Classroom , ClassroomMember, TeamMember, Evaluation
 from passlib.context import CryptContext
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from .schemas import ClassroomCreate
+from typing import List, Optional
+from schemas import ClassroomCreate
 import uuid
 import logging
 
@@ -53,6 +54,25 @@ class ClassroomCreate(BaseModel):
 class JoinClassRequest(BaseModel):
     class_code: str
     user_email: str
+
+class TeamCreateRequest(BaseModel):
+    classroom_id: str
+    team_members: list[int]
+
+class TeamMemberResponse(BaseModel):
+    team_id: str
+    student_ids: List[int]
+
+class EvaluationRequest(BaseModel):
+    team_id: str
+    classroom_id: str
+    evaluator_id: int
+    evaluated_id: int
+    cooperation: int
+    conceptual_contribution: int
+    practical_contribution: int
+    work_ethic: int
+    comments: Optional[str]
 
 @app.post("/signup")
 async def signup(user: UserCreate, db: Session = Depends(get_db)):
@@ -216,3 +236,141 @@ async def get_student_classrooms(user_email: str, db: Session = Depends(get_db))
     )
 
     return {"classes": [{"classroom_id": c.classroom_id, "classroom_name": c.classroom_name} for c in joined_classrooms]}
+
+@app.post("/create_team")
+async def create_team(request: TeamCreateRequest = Body(...), db: Session = Depends(get_db)):
+    classroom = db.query(Classroom).filter(Classroom.classroom_id == request.classroom_id).first()
+    if not classroom:
+        raise HTTPException(status_code=404, detail="Classroom not found")
+
+    # Generate a unique team ID once for the entire team
+    team_id = f"team-{uuid.uuid4().hex[:6]}"
+
+    # Add students to the same team
+    for student_id in request.team_members:
+        db.add(TeamMember(
+            classroom_id=request.classroom_id,
+            student_id=student_id,
+            team_id=team_id  # Use the same team_id for all students
+        ))
+
+    db.commit()
+    return {"message": "Team created successfully", "team_id": team_id}
+@app.post("/create_team")
+async def create_team(request: TeamCreateRequest = Body(...), db: Session = Depends(get_db)):
+    classroom = db.query(Classroom).filter(Classroom.classroom_id == request.classroom_id).first()
+    if not classroom:
+        raise HTTPException(status_code=404, detail="Classroom not found")
+
+    # Generate a unique team ID once for the entire team
+    team_id = f"team-{uuid.uuid4().hex[:6]}"
+
+    # Add students to the same team
+    for student_id in request.team_members:
+        db.add(TeamMember(
+            classroom_id=request.classroom_id,
+            student_id=student_id,
+            team_id=team_id  # Use the same team_id for all students
+        ))
+
+    db.commit()
+    return {"message": "Team created successfully", "team_id": team_id}
+
+
+@app.get("/get_teams/{classroom_id}", response_model=List[TeamMemberResponse])
+async def get_teams(classroom_id: str, db: Session = Depends(get_db)):
+    teams = (
+        db.query(TeamMember)
+        .filter(TeamMember.classroom_id == classroom_id)
+        .all()
+    )
+
+    # Organize teams by `team_id`
+    team_dict = {}
+    for team in teams:
+        if team.team_id not in team_dict:
+            team_dict[team.team_id] = []
+        team_dict[team.team_id].append(team.student_id)
+
+    return [{"team_id": team_id, "student_ids": members} for team_id, members in team_dict.items()]
+
+@app.post("/submit_evaluation")
+async def submit_evaluation(request: EvaluationRequest, db: Session = Depends(get_db)):
+    # Verify that the team exists
+    team = db.query(TeamMember).filter(TeamMember.team_id == request.team_id).first()
+    if not team:
+        raise HTTPException(status_code=404, detail="Team not found")
+
+    # Save the evaluation
+    evaluation = Evaluation(
+        team_id=request.team_id,
+        classroom_id=request.classroom_id,
+        evaluator_id=request.evaluator_id,
+        evaluated_id=request.evaluated_id,
+        cooperation=request.cooperation,
+        conceptual_contribution=request.conceptual_contribution,
+        practical_contribution=request.practical_contribution,
+        work_ethic=request.work_ethic,
+        comments=request.comments,
+    )
+    db.add(evaluation)
+    db.commit()
+    db.refresh(evaluation)
+
+    return {"message": "Evaluation submitted successfully", "evaluation_id": evaluation.id}
+
+@app.get("/get_team_evaluations/{team_id}")
+async def get_team_evaluations(team_id: str, db: Session = Depends(get_db)):
+    # Query evaluations for the given team ID
+    evaluations = (
+        db.query(Evaluation)
+        .filter(Evaluation.team_id == team_id)
+        .all()
+    )
+
+    if not evaluations:
+        raise HTTPException(status_code=404, detail="No evaluations found for this team.")
+
+    # Organize evaluations by `evaluated_id`
+    results = {}
+    for evaluation in evaluations:
+        if evaluation.evaluated_id not in results:
+            results[evaluation.evaluated_id] = {
+                "evaluations": [],
+                "averages": {},
+            }
+
+        # Append the evaluation details
+        results[evaluation.evaluated_id]["evaluations"].append({
+            "evaluator_id": evaluation.evaluator_id,
+            "cooperation": evaluation.cooperation,
+            "conceptual_contribution": evaluation.conceptual_contribution,
+            "practical_contribution": evaluation.practical_contribution,
+            "work_ethic": evaluation.work_ethic,
+            "comments": evaluation.comments,
+        })
+
+    # Calculate averages for each `evaluated_id`
+    for evaluated_id, data in results.items():
+        total = {
+            "cooperation": 0,
+            "conceptual_contribution": 0,
+            "practical_contribution": 0,
+            "work_ethic": 0,
+        }
+        count = len(data["evaluations"])
+
+        for eval in data["evaluations"]:
+            total["cooperation"] += eval["cooperation"]
+            total["conceptual_contribution"] += eval["conceptual_contribution"]
+            total["practical_contribution"] += eval["practical_contribution"]
+            total["work_ethic"] += eval["work_ethic"]
+
+        data["averages"] = {
+            "cooperation": total["cooperation"] / count,
+            "conceptual_contribution": total["conceptual_contribution"] / count,
+            "practical_contribution": total["practical_contribution"] / count,
+            "work_ethic": total["work_ethic"] / count,
+        }
+
+    return results

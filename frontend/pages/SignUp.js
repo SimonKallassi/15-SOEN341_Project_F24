@@ -164,9 +164,9 @@ const styles = {
         boxSizing: 'border-box',
     },
     pickerContainer: {
-        marginVertical: 15,
+        marginVertical: 30,
         width: '100%',
-        marginBottom: 15,
+        marginBottom: 30,
     },
     pickerLabel: {
         fontSize: 18,
@@ -176,8 +176,8 @@ const styles = {
     },
     picker: {
         width: '100%',
-        padding: 10,
-        borderRadius: 8,
+        padding: 0,
+        borderRadius: 5,
         border: '1px solid #61C0BF',
         color: '#034f84',
     },

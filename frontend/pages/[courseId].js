@@ -44,7 +44,7 @@ export default function CoursePage() {
         loadComponent();
     }, [router]);
 
-    // Fetch group members when the course ID changes
+    // Fetch group members when the course1212 ID changes
     useEffect(() => {
         async function fetchGroupMembers() {
             try {
