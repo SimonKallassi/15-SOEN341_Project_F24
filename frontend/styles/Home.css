@@ -1,0 +1,78 @@
+.split {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    background-color: #EAF6F6;
+    padding: 20px;
+    background-image: url('https://i.redd.it/downward-sloping-auditorium-or-lecture-hall-v0-37uhzc54njcc1.jpg?width=1160&format=pjpg&auto=webp&s=b506266f14a60da712be01a4e09dcee7978589d6');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.title {
+    text-align: center;
+    font-size: 72px;
+    font-weight: bold;
+    color: #3c87bd;
+    margin: 0;
+    margin-top: 20px;
+}
+
+#name {
+    padding-left: 0;
+    font-size: 72px;
+}
+
+.slogan {
+    margin: 10px 0 0 0;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+#start{
+    border-radius: 1.5rem;
+    border-color: #61C0BF;
+    background-color:#61C0BF;
+    width: 190px;
+    height: 50px;
+    margin-top: 10%;
+    margin-left: 25%;
+    text-align: center;
+    font-size: 18px;
+}
+#start:hover{
+    background-color: #61C0BF;
+    box-shadow: black;
+}
+#start span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.3s;
+  }
+#start span:after{
+    content: '\21E8';
+    font-size: 36px;
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#start:hover span{
+    padding-right: 30px;
+}
+#start:hover span:after{
+    opacity: 1;
+    right: -5px;
+}
+#login{
+    margin-left: 27%;
+    padding-top: 5px;
+}

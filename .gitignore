@@ -1,5 +1,3 @@
-
-node_modules/
-*.pyc
-.next/
+.next
+.venv/
 node_modules/
