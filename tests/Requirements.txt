@@ -5,3 +5,7 @@ then must install PostgreSQL and create a database. when installing PostgreSQL t
 
 once created database in SQL shell(psql) you can run the pytest on test_create_tables.py
 This test validates that the necessary tables are created and verify the idempotency of the table creation process.
+
+cd "C:\Users\najmu\Desktop\SOEN341 Demo\15-SOEN341_Project_F24\tests\backend"
+
+PYTHONPATH="C:/Users/najmu/Desktop/SOEN341 Demo/15-SOEN341_Project_F24/backend" python -m pytest
