@@ -2,9 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/[courseId]": "pages/[courseId].js",
   "/Login": "pages/Login.js",
   "/StudentDashboard": "pages/StudentDashboard.js",
-  "/": "pages/index.js",
+  "/[courseId]": "pages/[courseId].js",
   "/TeacherDash": "pages/TeacherDash.js"
 }

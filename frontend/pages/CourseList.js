@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 
 function CourseList({ courses }) {
-  
+
     return (
         <div>
             <div id="out">
@@ -27,8 +27,8 @@ function CourseList({ courses }) {
                   </select>
                 </div>
               </div>
-              
-              {/* Display each course */}
+
+              {/* Display each course1212 */}
               {courses.map(course => (
                   <div key={course.classroom_id} id="course">
                       {/* Using Next.js Link for navigation */}

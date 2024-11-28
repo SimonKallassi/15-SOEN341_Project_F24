@@ -20,8 +20,10 @@ const Login = () => {
             }));
 
             // Save email and role to localStorage
-            localStorage.setItem("user_email", email);  // Store the user's email locally
-            
+            localStorage.setItem("user_email", email);// Store the user's email locally
+            const userid = response.data.user_id;
+            localStorage.setItem("user_ID", userid);
+            console.log("Saved user_ID to localStorage:", userid);
             const role = response.data.role;
             localStorage.setItem("user_role", role); // Save role
             // Redirect based on role
